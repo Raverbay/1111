@@ -38,3 +38,23 @@
     render();
   }));
 })();
+
+/* V8 / HERO MOTION */
+(()=>{
+  const hero=document.querySelector('.new-hero'), visual=document.querySelector('.hero-visual');
+  if(!hero)return;
+  requestAnimationFrame(()=>hero.classList.add('is-ready'));
+  if(visual){
+    visual.addEventListener('pointermove',e=>{
+      const r=visual.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      visual.style.setProperty('--mx',`${x*10}px`);
+      visual.style.setProperty('--my',`${y*10}px`);
+    });
+    visual.addEventListener('pointerleave',()=>{visual.style.setProperty('--mx','0px');visual.style.setProperty('--my','0px')});
+  }
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in-view')});
+  },{threshold:.12});
+  document.querySelectorAll('.quick-start,.look-finder,.selection-section,.store-section,.closing-home').forEach(el=>io.observe(el));
+})();

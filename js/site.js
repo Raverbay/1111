@@ -30,4 +30,37 @@ function closeCart(){$('#cart').classList.remove('open');$('#cartBackdrop').clas
 async function cartRefresh(){const ps=await FLIPCO.load(),items=FLIPCO_CART.items();$('#cartCount').textContent=FLIPCO_CART.count();$('#cartList').innerHTML=items.length?items.map(x=>{const p=ps.find(y=>y.id===x.id);return p?`<div class="cart-row"><img src="${esc(p.image)}" onerror="this.onerror=null;this.src='assets/products/${esc(p.art)}'"><div><small>${esc(p.brand)}</small><b>${esc(p.name)}</b><span>${esc(x.size)} · ${x.qty} × ${FLIPCO.money(p.price)}</span><button data-remove="${esc(x.id)}" data-size="${esc(x.size)}">RIMUOVI</button></div></div>`:''}).join(''):'<div class="cart-empty"><span>0</span><p>Il tuo bag è vuoto.</p><a href="shop.html" class="arrow">SCOPRI LA SELEZIONE ↗</a></div>';
 $('#cartTotal').textContent=FLIPCO.money(FLIPCO_CART.total(ps));document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>FLIPCO_CART.remove(b.dataset.remove,b.dataset.size))}
 shell();panels();cartRefresh();document.addEventListener('cart:change',cartRefresh);
+
+/* V8 / HEADER + MOTION SYSTEM */
+(()=>{
+  const header=document.querySelector('.header'), utility=document.querySelector('.utility');
+  if(!header)return;
+  let lastY=window.scrollY, ticking=false;
+  const update=()=>{
+    const y=window.scrollY;
+    header.classList.toggle('scrolled',y>24);
+    document.body.classList.toggle('nav-hidden', y>120 && y>lastY);
+    document.body.classList.toggle('nav-show', y<=120 || y<lastY);
+    lastY=y; ticking=false;
+  };
+  window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}}, {passive:true});
+  update();
+
+  document.querySelectorAll('.desktop-nav a').forEach(a=>{
+    try{
+      const target=new URL(a.href,location.href);
+      if(target.pathname===location.pathname && target.hash===location.hash) a.classList.add('current');
+    }catch{}
+  });
+
+  // smooth anchor transitions without hijacking normal links
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]');
+    if(!a)return;
+    const id=a.getAttribute('href');
+    if(!id||id==="#")return;
+    const el=document.querySelector(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'',id);}
+  });
+})();
 })();
