@@ -166,3 +166,19 @@
 .fx-empty span{font:9px "DM Mono",monospace;color:#77736d;letter-spacing:.13em}
 .fx-empty b{font-size:clamp(28px,4vw,52px);line-height:.9;letter-spacing:-.055em;margin:18px 0 25px;max-width:700px}
 @media(max-width:560px){.fx-empty{min-height:300px;padding:24px}.fx-empty b{font-size:36px}}
+
+/* V26 — final deadline polish */
+.fx-home section[id]{scroll-margin-top:112px}
+.fx-finder-result{transition:border-color .3s ease,background .3s ease,transform .3s ease}
+.fx-finder-result.is-ready{border-top-color:#f4f1eb;background:rgba(255,255,255,.025);padding:24px 18px 18px;margin-left:-18px;margin-right:-18px}
+.fx-finder-result.is-ready b{max-width:760px}
+.fx-finder-result.is-ready:after{content:'YOUR EDIT IS READY ↓';display:block;margin-top:18px;font:8px "DM Mono",monospace;letter-spacing:.14em;color:#f4f1eb;opacity:.7}
+.fx-story-actions{margin-top:26px}
+.fx-story-actions .fx-link{font-size:9px}
+.fx-product-image{background:#fff}
+.fx-filter-strip button:focus-visible,.fx-choice-row button:focus-visible,.fx-button:focus-visible,.fx-link:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media(max-width:560px){
+  .fx-finder-result.is-ready{margin-left:0;margin-right:0;padding:22px 0 16px}
+  .fx-finder-result.is-ready:after{margin-top:15px}
+  .fx-story-actions{margin-top:20px}
+}
