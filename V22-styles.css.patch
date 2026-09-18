@@ -1,0 +1,28 @@
+/* V22 / FIX: homepage sections are content, not JS-dependent visibility.
+   The previous reveal system set these sections to opacity:0 but never added
+   the .in-view class. They therefore occupied space while rendering blank. */
+.quick-start,
+.look-finder,
+.selection-section,
+.store-section,
+.closing-home{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+
+/* Keep the reveal class available for future motion without ever hiding content. */
+.quick-start.in-view,
+.look-finder.in-view,
+.selection-section.in-view,
+.store-section.in-view,
+.closing-home.in-view,
+.quick-start.section-revealed,
+.look-finder.section-revealed,
+.selection-section.section-revealed,
+.store-section.section-revealed,
+.closing-home.section-revealed{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
