@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+<rect width="800" height="1000" fill="#d8d2c8"/>
+<path d="M245 205h310l-25 135 78 420-80 85H272l-80-85 78-420z" fill="#6f7377"/>
+<path d="M245 205h310l-18 120H263z" fill="#81868a"/>
+<path d="M270 760h260l18 85H252z" fill="#5e6266"/>
+<path d="M260 335h280M235 500h330M250 650h300" stroke="#45484b" stroke-width="5" opacity=".55"/>
+<text x="400" y="920" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" letter-spacing="5" fill="#222">DSQUARED2 / D2KIDS</text>
+</svg>
