@@ -1,0 +1,43 @@
+import json, os, textwrap
+root='/tmp/finalflip'
+os.makedirs(root+'/assets/products',exist_ok=True)
+products=[
+{"id":"NB9060-ERC","sku":"U9060ERC","brand":"New Balance","name":"9060","category":"Uomo","price":190,"sizes":["40","41","42","42.5","43","44","45"],"stock":{"40":1,"41":1,"42":1,"42.5":0,"43":1,"44":1,"45":0},"color":"Mushroom / Arid Stone","material":"Mesh con rivestimenti in suede","fit":"Unisex","season":"FW26","badge":"NEW","image":"https://nb.scene7.com/is/image/NB/U9060ERC_nb_02_i?$pdpflexf2$","source":"https://www.newbalance.it/it/pd/9060/U9060ERC-D-13.html","type":"sneaker","available":True,"art":"nb-9060-erc.svg","description":"New Balance 9060. Una silhouette futuristica della serie 99X, selezionata da Flip&Co."},
+{"id":"NB9060-3EG","sku":"U90603EG","brand":"New Balance","name":"9060","category":"Donna","price":190,"sizes":["36","37","37.5","38","39","40","41","42"],"stock":{"36":1,"37":1,"37.5":0,"38":1,"39":1,"40":1,"41":0,"42":0},"color":"Breakfast Tea / Angora","material":"Mesh con rivestimenti in suede","fit":"Unisex","season":"FW26","badge":"NEW","image":"https://nb.scene7.com/is/image/NB/U90603EG_nb_02_i?$pdpflexf2$","source":"https://www.newbalance.it/it/pd/9060/U90603EG","type":"sneaker","available":True,"art":"nb-9060-3eg.svg","description":"New Balance 9060 in Breakfast Tea / Angora. Selezionata da Flip&Co."},
+{"id":"BARROW-TEE-01","sku":"BARROW-TEE-01","brand":"Barrow","name":"Jersey T-Shirt","category":"Uomo","price":90,"sizes":["S","M","L","XL"],"stock":{"S":1,"M":2,"L":1,"XL":0},"color":"Coconut","material":"100% cotone","fit":"Relaxed","season":"SS26","badge":"SELECTED","image":"https://www.barrowofficial.com/","source":"https://www.barrowofficial.com/collections/all","type":"apparel","available":True,"art":"barrow-tee.svg","description":"T-shirt Barrow in jersey di cotone, con linguaggio grafico distintivo del brand."},
+{"id":"BARROW-HOODIE-01","sku":"BARROW-HOODIE-01","brand":"Barrow","name":"Iconic Hoodie","category":"Uomo","price":145,"sizes":["S","M","L"],"stock":{"S":1,"M":1,"L":1},"color":"Wild Rose","material":"100% cotone","fit":"Regular","season":"SS26","badge":"SELECTED","image":"https://www.barrowofficial.com/","source":"https://www.barrowofficial.com/en/collections/iconic-fw24","type":"apparel","available":True,"art":"barrow-hoodie.svg","description":"Iconic Hoodie Barrow con logo oversize e patch smile."},
+{"id":"BARROW-DENIM-01","sku":"BARROW-DENIM-01","brand":"Barrow","name":"Denim Jeans","category":"Donna","price":210,"sizes":["26","28","30","32","34"],"stock":{"26":1,"28":1,"30":1,"32":0,"34":0},"color":"Ice Denim","material":"100% cotone","fit":"Baggy","season":"SS26","badge":"NEW","image":"https://www.barrowofficial.com/","source":"https://www.barrowofficial.com/collections/our-peeks","type":"apparel","available":True,"art":"barrow-denim.svg","description":"Denim Barrow dalla vestibilità baggy, selezionato nella collezione corrente."},
+{"id":"MOSCHINO-TEDDY-TEE","sku":"MOKH1M060LBA1160100","brand":"Moschino","name":"Teddy Bear Maxi T-Shirt","category":"Kids","price":85,"sizes":["4A","6A","8A","10A","12A","14A"],"stock":{"4A":1,"6A":1,"8A":1,"10A":0,"12A":1,"14A":0},"color":"Nero","material":"Jersey di cotone","fit":"Maxi","season":"FW26","badge":"KIDS EDIT","image":"https://www.moschino.com/","source":"https://www.moschino.com/products/maxi-t-shirt-in-jersey-di-cotone-moschino-teddy-bear-mokh1m060lba1160100","type":"apparel","available":True,"art":"moschino-tee.svg","description":"Maxi T-shirt Moschino Teddy Bear in jersey di cotone."},
+{"id":"MOSCHINO-TEDDY-HOODIE","sku":"MOKHZF08VLCA7760100","brand":"Moschino","name":"Teddy Bear Sweatshirt","category":"Kids","price":99,"sizes":["4A","6A","8A","10A","12A","14A"],"stock":{"4A":1,"6A":1,"8A":0,"10A":1,"12A":0,"14A":0},"color":"Nero","material":"Cotone","fit":"Regular","season":"FW26","badge":"KIDS EDIT","image":"https://www.moschino.com/","source":"https://www.moschino.com/products/felpa-in-cotone-moschino-teddy-bear-mokhzf08vlca7760100","type":"apparel","available":True,"art":"moschino-hoodie.svg","description":"Felpa Moschino Teddy Bear in cotone."},
+{"id":"DSQ2-PUFF-KIDS","sku":"KDQ1090D00BNDQ900","brand":"Dsquared2","name":"D2Kids Junior Down Jacket","category":"Kids","price":390,"sizes":["4Y","6Y","8Y","10Y","12Y","14Y","16Y"],"stock":{"4Y":1,"6Y":0,"8Y":1,"10Y":1,"12Y":0,"14Y":1,"16Y":0},"color":"Nero","material":"Nylon lucido trapuntato","fit":"Regular","season":"FW26","badge":"KIDS EDIT","image":"https://www.dsquared2.com/","source":"https://www.dsquared2.com/it/piumino-d2kids-junior/KDQ1090D00BNDQ900.html","type":"apparel","available":True,"art":"dsq-puffer.svg","description":"D2Kids Junior Down Jacket, selezionato da Flip&Co per la sezione Kids."},
+{"id":"DSQ2-PUFF-KIDS-ALT","sku":"KDQ1090D00BNDQ900-ALT","brand":"Dsquared2","name":"D2Kids Junior Down Jacket / Black Edit","category":"Kids","price":390,"sizes":["6Y","8Y","10Y","12Y","14Y"],"stock":{"6Y":1,"8Y":1,"10Y":0,"12Y":1,"14Y":0},"color":"Black","material":"Nylon lucido trapuntato","fit":"Regular","season":"FW26","badge":"EDITORIAL","image":"https://www.dsquared2.com/","source":"https://www.dsquared2.com/it/piumino-d2kids-junior/KDQ1090D00BNDQ900.html","type":"apparel","available":True,"art":"dsq-puffer-alt.svg","description":"Una seconda presentazione editoriale del D2Kids Junior Down Jacket."}
+]
+json.dump({"version":"2026-09-18","warehouse":"FLIPCO-CAGLIARI","model":"single_inventory","products":products},open(root+'/data/products.json','w'),ensure_ascii=False,indent=2)
+# collections aligned to new assortment
+collections=[
+{"slug":"new-arrivals","title":"New Arrivals","eyebrow":"01 / THE LATEST","description":"Le nuove entrate che definiscono il momento.","filter":{"badge":"NEW"}},
+{"slug":"sneakers","title":"Sneakers","eyebrow":"02 / FOOTWEAR","description":"Silhouette contemporanee, selezionate per la città.","filter":{"type":"sneaker"}},
+{"slug":"street-edit","title":"Street Edit","eyebrow":"03 / STREET CULTURE","description":"Grafica, volume e attitude. Il lato più urbano della selezione.","filter":{"brand":"Barrow"}},
+{"slug":"kids","title":"Kids","eyebrow":"04 / YOUNG","description":"Una selezione Kids costruita con lo stesso occhio del resto del negozio.","filter":{"category":"Kids"}},
+{"slug":"icons","title":"Icons","eyebrow":"05 / SIGNATURES","description":"I pezzi riconoscibili al primo sguardo.","filter":{"brand":"New Balance"}}
+]
+json.dump({"collections":collections},open(root+'/data/collections.json','w'),ensure_ascii=False,indent=2)
+# stock csv
+with open(root+'/data/imported-stock.csv','w') as f:
+ f.write('sku,brand,name,category,price\n')
+ for p in products:f.write(f"{p['sku']},{p['brand']},{p['name']},{p['category']},{p['price']}\n")
+# svg art
+svgs={
+'nb-9060-erc.svg':('#c9c0b3','#111','9060','MUSHROOM / ARID STONE','SNEAKER'),
+'nb-9060-3eg.svg':('#d8c6aa','#111','9060','BREAKFAST TEA / ANGORA','SNEAKER'),
+'barrow-tee.svg':('#dedbd3','#111','BARROW','JERSEY T-SHIRT','STREET'),
+'barrow-hoodie.svg':('#d4b8c0','#111','BARROW','ICONIC HOODIE','STREET'),
+'barrow-denim.svg':('#91a0ab','#111','BARROW','DENIM','STREET'),
+'moschino-tee.svg':('#171717','#fff','MOSCHINO','TEDDY BEAR TEE','KIDS'),
+'moschino-hoodie.svg':('#202020','#fff','MOSCHINO','TEDDY BEAR SWEATSHIRT','KIDS'),
+'dsq-puffer.svg':('#111','#fff','DSQUARED2','D2KIDS DOWN JACKET','KIDS'),
+'dsq-puffer-alt.svg':('#242424','#fff','DSQUARED2','BLACK EDIT','KIDS')}
+for fn,(bg,fg,title,sub,tag) in svgs.items():
+ shape='''<path d="M205 190 L315 150 L425 190 L397 290 L350 270 L350 545 L270 545 L270 270 L223 290 Z" fill="none" stroke="{fg}" stroke-width="5"/><path d="M205 190 L270 225 L350 225 L425 190" fill="none" stroke="{fg}" stroke-width="5"/>'''.format(fg=fg) if tag!='SNEAKER' else '''<path d="M145 430 C220 410 245 360 315 365 L405 405 C438 420 480 432 515 448 L510 490 L140 490 C105 475 112 445 145 430 Z" fill="none" stroke="{fg}" stroke-width="6"/><path d="M240 404 L340 450 M285 388 L375 435 M330 378 L410 420" stroke="{fg}" stroke-width="5"/>'''.format(fg=fg)
+ svg=f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 780"><rect width="660" height="780" fill="{bg}"/><text x="42" y="70" font-family="Arial,sans-serif" font-size="16" letter-spacing="3" fill="{fg}">{tag}</text><text x="42" y="125" font-family="Arial,sans-serif" font-size="48" font-weight="700" letter-spacing="-2" fill="{fg}">{title}</text>{shape}<text x="42" y="710" font-family="Arial,sans-serif" font-size="18" letter-spacing="2" fill="{fg}">{sub}</text><text x="42" y="742" font-family="Arial,sans-serif" font-size="11" letter-spacing="2" fill="{fg}" opacity=".65">FLIP&amp;CO / CAGLIARI / EDIT 01</text></svg>'''
+ open(root+'/assets/products/'+fn,'w').write(svg)
