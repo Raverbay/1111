@@ -72,7 +72,7 @@
     const items=ps.slice(0,8);
     showcase.innerHTML=items.map((p,i)=>`
       <div class="hero-product-tile ${positions[i]||''}">
-        <img src="${esc(p.image)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${fallback(p)}'">
+        <img src="${esc(p.image)}" alt="" onerror="this.onerror=null;this.src='${fallback(p)}'">
         <span>${esc(p.brand)} · ${esc(p.category)}</span>
       </div>`).join('');
     requestAnimationFrame(()=>showcase.classList.add('is-loaded'));
