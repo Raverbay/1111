@@ -1,0 +1,1 @@
+(()=>{try{const o=JSON.parse(sessionStorage.getItem('flipco_order')||'{}');document.querySelector('#orderNumber').textContent=o.id||'FC-DEMO';document.querySelector('#orderName').textContent=o.name||'Cliente'}catch{}})();
