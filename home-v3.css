@@ -158,3 +158,11 @@
 @media(max-width:1050px){.fx-brand-cloud{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.fx-brands-head{grid-template-columns:1fr;gap:34px}}
 @media(max-width:560px){.fx-brands{padding-left:16px;padding-right:16px}.fx-brand-cloud{grid-template-columns:1fr}.fx-filter-strip{overflow:auto;flex-wrap:nowrap}.fx-filter-strip button{white-space:nowrap}}
+
+/* V25 — Flip Finder is the selector; Online Edit is its live response. */
+.fx-finder-result{border-top:1px solid #30302d;margin-top:22px;padding-top:22px}
+.fx-finder-result b{max-width:720px}
+.fx-empty{grid-column:1/-1;min-height:260px;border:1px solid #aaa59d;padding:32px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:#e8e4dd}
+.fx-empty span{font:9px "DM Mono",monospace;color:#77736d;letter-spacing:.13em}
+.fx-empty b{font-size:clamp(28px,4vw,52px);line-height:.9;letter-spacing:-.055em;margin:18px 0 25px;max-width:700px}
+@media(max-width:560px){.fx-empty{min-height:300px;padding:24px}.fx-empty b{font-size:36px}}
