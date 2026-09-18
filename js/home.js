@@ -65,16 +65,16 @@
   if(!showcase)return;
   const esc=FLIPCO.esc;
   const fallback=(p)=>`assets/products/${esc(p.art)}`;
-  const positions=['p1','p2','p3','p4','p5','p6','p7','p8'];
   (async()=>{
     const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0);
     if(!ps.length)return;
     const items=ps.slice(0,8);
-    showcase.innerHTML=items.map((p,i)=>`
-      <div class="hero-product-tile ${positions[i]||''}">
-        <img src="${esc(p.image)}" alt="" onerror="this.onerror=null;this.src='${fallback(p)}'">
-        <span>${esc(p.brand)} · ${esc(p.category)}</span>
-      </div>`).join('');
+    const card=(p)=>`<div class="hero-product-tile">
+      <img src="${esc(p.image)}" alt="${esc(p.brand)} ${esc(p.name)}" loading="eager" onerror="this.onerror=null;this.src='${fallback(p)}'">
+      <span>${esc(p.brand)} · ${esc(p.category)}</span>
+    </div>`;
+    const column=(arr)=>`<div class="showcase-column">${arr.concat(arr).map(card).join('')}</div>`;
+    showcase.innerHTML=column(items.slice(0,3))+column(items.slice(3,6))+column(items.slice(6,8));
     requestAnimationFrame(()=>showcase.classList.add('is-loaded'));
   })();
 })();
