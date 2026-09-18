@@ -13,7 +13,7 @@
  const meta=document.querySelector('#heroMeta'); if(meta) meta.textContent=`${String(ps.length).padStart(2,'0')} PIECES / ONLINE EDIT`;
 })();
 
-/* V15 / FLIP FINDER — LIVE PRODUCT MATCHING */
+/* V16 / FLIP FINDER — STRICT TWO-DIMENSION MATCHING */
 (()=>{
   const result=document.querySelector('#finderResult');
   const buttons=document.querySelectorAll('[data-finder] button');
@@ -22,43 +22,80 @@
   const state={audience:null,need:null};
   let products=[];
 
+  const norm=v=>String(v??'').trim().toLowerCase();
+
+  /*
+   * The Finder has two independent dimensions:
+   * 1) audience = Uomo / Donna / Kids
+   * 2) need = sneaker / apparel / all
+   *
+   * Both are mandatory filters. We intentionally use BOTH
+   * `category` and `audience` when available, so a product can
+   * never leak from another audience into the result.
+   */
+  const matches=()=>{
+    if(!state.audience || !state.need)return [];
+
+    const audience=norm(state.audience);
+    const need=state.need;
+
+    return products.filter(p=>{
+      if(FLIPCO.stock(p)<=0)return false;
+
+      const productAudience=norm(p.audience || p.category);
+
+      // HARD audience gate.
+      if(productAudience!==audience)return false;
+
+      // HARD product-type gate.
+      if(need==='sneaker'){
+        return norm(p.type)==='sneaker';
+      }
+
+      if(need==='apparel'){
+        return norm(p.type)==='apparel';
+      }
+
+      // "Sorprendetemi" = anything, but ONLY within the chosen audience.
+      return need==='all';
+    });
+  };
+
+  const productQuery=()=>{
+    const params=new URLSearchParams();
+    params.set('category',state.audience);
+    if(state.need!=='all')params.set('type',state.need);
+    return params.toString();
+  };
+
   const whatsapp='https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20vorrei%20un%20consiglio%20per%20un%20look.';
 
-  const matches=()=>{
-    let out=products.filter(p=>FLIPCO.stock(p)>0);
-
-    if(state.audience){
-      out=out.filter(p=>p.category===state.audience);
-    }
-
-    if(state.need==='sneaker'){
-      out=out.filter(p=>p.type==='sneaker');
-    }else if(state.need==='apparel'){
-      out=out.filter(p=>p.type==='apparel');
-    }
-
-    return out;
-  };
+  const img=p=>`<img src="${e(p.image)}" alt="${e(p.brand)} ${e(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/${e(p.art)}'">`;
 
   const render=()=>{
     if(!state.audience || !state.need){
       const selected=Number(Boolean(state.audience))+Number(Boolean(state.need));
       result.innerHTML=`
         <span>${selected}/2 RISPOSTE SELEZIONATE</span>
-        <b>${selected===0?'Partiamo da te.':state.audience?`Perfetto. Ora dimmi cosa cerchi per ${e(state.audience)}.`:'Perfetto. Ora dimmi per chi stai cercando.'}</b>`;
+        <b>${selected===0
+          ?'Partiamo da te.'
+          :state.audience
+            ?`Perfetto. Ora dimmi cosa cerchi per ${e(state.audience)}.`
+            :'Perfetto. Ora dimmi per chi stai cercando.'}</b>`;
       return;
     }
 
     const picks=matches().slice(0,3);
-    const query=`category=${encodeURIComponent(state.audience)}${state.need!=='all'?'&type='+encodeURIComponent(state.need):''}`;
+    const labelNeed=state.need==='sneaker'?'SNEAKERS':state.need==='apparel'?'CAPI':'TUTTO';
+    const query=productQuery();
 
     if(!picks.length){
       result.innerHTML=`
         <div class="finder-result-head">
-          <span>NESSUN MATCH NELLA SELEZIONE ONLINE</span>
+          <span>${e(state.audience.toUpperCase())} · ${labelNeed} / 0 MATCH</span>
           <button type="button" class="finder-reset" data-finder-reset>RIPARTI ↻</button>
         </div>
-        <b>Non significa che in store non ci sia. Scrivici: cerchiamo qualcosa per te.</b>
+        <b>Non abbiamo questo match nell'Online Edit. In store potremmo avere molto di più.</b>
         <a target="_blank" rel="noopener" href="${whatsapp}">PARLA CON NOI SU WHATSAPP ↗</a>`;
       bindReset();
       return;
@@ -66,7 +103,7 @@
 
     result.innerHTML=`
       <div class="finder-result-head">
-        <span>IL TUO FLIP / ${picks.length} ${picks.length===1?'PEZZO':'PEZZI'}</span>
+        <span>${e(state.audience.toUpperCase())} · ${labelNeed} / ${picks.length} ${picks.length===1?'MATCH':'MATCH'}</span>
         <button type="button" class="finder-reset" data-finder-reset>RIPARTI ↻</button>
       </div>
       <div class="finder-picks">
@@ -86,19 +123,12 @@
 
   const bindReset=()=>{
     const reset=result.querySelector('[data-finder-reset]');
-    if(reset) reset.onclick=()=>{
+    if(reset)reset.onclick=()=>{
       state.audience=null;
       state.need=null;
       buttons.forEach(b=>b.classList.remove('active'));
       render();
     };
-  };
-
-  const img=p=>`<img src="${e(p.image)}" alt="${e(p.brand)} ${e(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/${e(p.art)}'">`;
-
-  const load=async()=>{
-    products=await FLIPCO.load();
-    render();
   };
 
   buttons.forEach(btn=>btn.addEventListener('click',()=>{
@@ -111,10 +141,13 @@
     render();
   }));
 
-  load();
+  (async()=>{
+    products=await FLIPCO.load();
+    render();
+  })();
 })();
 
-/* V8 / HERO MOTION */
+/* HERO MOTION */
 (()=>{
   const hero=document.querySelector('.new-hero'), visual=document.querySelector('.hero-visual');
   if(!hero)return;
@@ -126,7 +159,10 @@
       visual.style.setProperty('--mx',`${x*10}px`);
       visual.style.setProperty('--my',`${y*10}px`);
     });
-    visual.addEventListener('pointerleave',()=>{visual.style.setProperty('--mx','0px');visual.style.setProperty('--my','0px')});
+    visual.addEventListener('pointerleave',()=>{
+      visual.style.setProperty('--mx','0px');
+      visual.style.setProperty('--my','0px');
+    });
   }
   const io=new IntersectionObserver(entries=>{
     entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in-view')});
@@ -134,7 +170,7 @@
   document.querySelectorAll('.quick-start,.look-finder,.selection-section,.store-section,.closing-home').forEach(el=>io.observe(el));
 })();
 
-/* V14 / HERO PRODUCT SHOWCASE — LOCAL PRODUCT ASSETS */
+/* HERO PRODUCT SHOWCASE — LOCAL PRODUCT ASSETS */
 (()=>{
   const showcase=document.querySelector('#heroShowcase');
   if(!showcase)return;
@@ -142,16 +178,11 @@
   (async()=>{
     const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0 && p.art);
     if(!ps.length)return;
-
     const card=p=>`<figure class="window-photo">
       <img src="assets/products/${esc(p.art)}" alt="${esc(p.brand)} ${esc(p.name)}" loading="eager">
     </figure>`;
-
-    const lane=(items)=>`<div class="window-lane">${items.concat(items).map(card).join('')}</div>`;
-    const a=ps.slice(0,3);
-    const b=ps.slice(3,6);
-    const c=ps.slice(0,3).reverse();
-
+    const lane=items=>`<div class="window-lane">${items.concat(items).map(card).join('')}</div>`;
+    const a=ps.slice(0,3),b=ps.slice(3,6),c=ps.slice(0,3).reverse();
     showcase.innerHTML=lane(a)+lane(b)+lane(c);
     requestAnimationFrame(()=>showcase.classList.add('is-loaded'));
   })();
