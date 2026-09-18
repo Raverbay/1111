@@ -92,4 +92,18 @@
   }
 
   document.querySelector('.new-hero')?.classList.add('is-ready');
+
+  /* V22: animation is enhancement only; content is never hidden waiting for JS. */
+  const revealables=document.querySelectorAll('.quick-start,.look-finder,.selection-section,.store-section,.closing-home');
+  const reveal=el=>el.classList.add('section-revealed');
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ reveal(entry.target); observer.unobserve(entry.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.02});
+    revealables.forEach(el=>observer.observe(el));
+  }else{
+    revealables.forEach(reveal);
+  }
 })();
