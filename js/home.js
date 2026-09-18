@@ -59,22 +59,28 @@
   document.querySelectorAll('.quick-start,.look-finder,.selection-section,.store-section,.closing-home').forEach(el=>io.observe(el));
 })();
 
-/* V9 / HERO PRODUCT SHOWCASE */
+/* V14 / HERO PRODUCT SHOWCASE — LOCAL PRODUCT ASSETS */
 (()=>{
   const showcase=document.querySelector('#heroShowcase');
   if(!showcase)return;
   const esc=FLIPCO.esc;
-  const fallback=(p)=>`assets/products/${esc(p.art)}`;
   (async()=>{
-    const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0);
+    const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0 && p.art);
     if(!ps.length)return;
-    const items=ps.slice(0,8);
-    const card=(p)=>`<div class="hero-product-tile">
-      <img src="${esc(p.image)}" alt="${esc(p.brand)} ${esc(p.name)}" loading="eager" onerror="this.onerror=null;this.src='${fallback(p)}'">
-      <span>${esc(p.brand)} · ${esc(p.category)}</span>
-    </div>`;
-    const column=(arr)=>`<div class="showcase-column">${arr.concat(arr).map(card).join('')}</div>`;
-    showcase.innerHTML=column(items.slice(0,3))+column(items.slice(3,6))+column(items.slice(6,8));
+
+    /* Use only product artwork already inside the repository.
+       No external brand/CDN images are loaded in the hero.
+       The complete asset is shown with object-fit: contain so the product is never cropped. */
+    const card=p=>`<figure class="window-photo">
+      <img src="assets/products/${esc(p.art)}" alt="${esc(p.brand)} ${esc(p.name)}" loading="eager">
+    </figure>`;
+
+    const lane=(items)=>`<div class="window-lane">${items.concat(items).map(card).join('')}</div>`;
+    const a=ps.slice(0,3);
+    const b=ps.slice(3,6);
+    const c=ps.slice(0,3).reverse();
+
+    showcase.innerHTML=lane(a)+lane(b)+lane(c);
     requestAnimationFrame(()=>showcase.classList.add('is-loaded'));
   })();
 })();
