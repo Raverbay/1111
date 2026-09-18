@@ -28,3 +28,7 @@ Upload the repository contents to GitHub Pages. The project is static and requir
 - Connect payment provider and order service.
 - Complete legal/cookie configuration.
 - Add production analytics, sitemap, robots and structured product data.
+
+
+## V6 positioning
+Flip&Co has two connected experiences: the **Online Edit** is a curated selection, while the **store** carries a broader physical selection and offers in-person styling. The site is for Uomo, Donna and Kids. “Ti facciamo il look” is the main human service bridge, available in store or via WhatsApp.

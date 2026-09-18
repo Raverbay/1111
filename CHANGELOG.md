@@ -18,3 +18,11 @@
 - Added PDP source verification note, official-brand link and go-live inventory disclaimer.
 - Added cookie bar and responsive commerce polish.
 - Converted checkout wording to an order-request flow pending payment-provider integration.
+
+
+## V6 — Human Commerce
+- Reframed the experience around the customer: Uomo / Donna / Kids.
+- Introduced Online Edit vs Full Store Experience positioning.
+- Added “Ti facciamo il look” service with in-store and WhatsApp paths.
+- Reworked homepage hierarchy, copy, CTA system and responsive art direction.
+- Added PDP human-assistance block and stronger store bridge.
