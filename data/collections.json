@@ -1,0 +1,49 @@
+{
+  "collections": [
+    {
+      "slug": "new-arrivals",
+      "title": "New Arrivals",
+      "eyebrow": "01 / THE LATEST",
+      "description": "Le nuove entrate che definiscono il momento.",
+      "filter": {
+        "badge": "NEW"
+      }
+    },
+    {
+      "slug": "sneakers",
+      "title": "Sneakers",
+      "eyebrow": "02 / FOOTWEAR",
+      "description": "Silhouette contemporanee, selezionate per la città.",
+      "filter": {
+        "type": "sneaker"
+      }
+    },
+    {
+      "slug": "street-edit",
+      "title": "Street Edit",
+      "eyebrow": "03 / STREET CULTURE",
+      "description": "Grafica, volume e attitude. Il lato più urbano della selezione.",
+      "filter": {
+        "brand": "Barrow"
+      }
+    },
+    {
+      "slug": "kids",
+      "title": "Kids",
+      "eyebrow": "04 / YOUNG",
+      "description": "Una selezione Kids costruita con lo stesso occhio del resto del negozio.",
+      "filter": {
+        "category": "Kids"
+      }
+    },
+    {
+      "slug": "icons",
+      "title": "Icons",
+      "eyebrow": "05 / SIGNATURES",
+      "description": "I pezzi riconoscibili al primo sguardo.",
+      "filter": {
+        "brand": "New Balance"
+      }
+    }
+  ]
+}
