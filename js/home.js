@@ -12,31 +12,106 @@
  if(rail) rail.innerHTML=latest.map((p,i)=>`<a class="rail-card" href="product.html?id=${encodeURIComponent(p.id)}"><div class="rail-no">${String(i+1).padStart(2,'0')}</div><div class="rail-img">${img(p)}</div><div class="rail-info"><small>${e(p.brand)} · ${e(p.category)}</small><b>${e(p.name)}</b><span>${FLIPCO.money(p.price)}</span></div></a>`).join('');
  const meta=document.querySelector('#heroMeta'); if(meta) meta.textContent=`${String(ps.length).padStart(2,'0')} PIECES / ONLINE EDIT`;
 })();
-/* V7 / FLIP FINDER */
+
+/* V15 / FLIP FINDER — LIVE PRODUCT MATCHING */
 (()=>{
   const result=document.querySelector('#finderResult');
   const buttons=document.querySelectorAll('[data-finder] button');
   if(!result||!buttons.length)return;
+
   const state={audience:null,need:null};
-  const render=async()=>{
-    const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0);
-    let a=ps.filter(p=>!state.audience||p.category===state.audience);
-    if(state.need&&state.need!=='all')a=a.filter(p=>p.type===state.need);
-    if(!state.audience||!state.need){
-      result.innerHTML='<span>SELEZIONA DUE RISPOSTE</span><b>Costruiamo la tua prima selezione.</b>';
+  let products=[];
+
+  const whatsapp='https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20vorrei%20un%20consiglio%20per%20un%20look.';
+
+  const matches=()=>{
+    let out=products.filter(p=>FLIPCO.stock(p)>0);
+
+    if(state.audience){
+      out=out.filter(p=>p.category===state.audience);
+    }
+
+    if(state.need==='sneaker'){
+      out=out.filter(p=>p.type==='sneaker');
+    }else if(state.need==='apparel'){
+      out=out.filter(p=>p.type==='apparel');
+    }
+
+    return out;
+  };
+
+  const render=()=>{
+    if(!state.audience || !state.need){
+      const selected=Number(Boolean(state.audience))+Number(Boolean(state.need));
+      result.innerHTML=`
+        <span>${selected}/2 RISPOSTE SELEZIONATE</span>
+        <b>${selected===0?'Partiamo da te.':state.audience?`Perfetto. Ora dimmi cosa cerchi per ${e(state.audience)}.`:'Perfetto. Ora dimmi per chi stai cercando.'}</b>`;
       return;
     }
-    const picks=a.slice(0,3);
-    result.innerHTML=picks.length
-      ? `<span>IL TUO FLIP / ${picks.length} PEZZI</span><b>${picks.map(p=>`${e(p.brand)} ${e(p.name)}`).join(' · ')}</b><a href="shop.html?category=${encodeURIComponent(state.audience)}${state.need!=='all'?'&type='+encodeURIComponent(state.need):''}">VEDI LA SELEZIONE ↗</a>`
-      : `<span>NESSUN MATCH IMMEDIATO</span><b>Ti aiutiamo noi a trovare qualcosa.</b><a target="_blank" rel="noopener" href="https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20vorrei%20un%20consiglio%20per%20un%20look.">SCRIVICI SU WHATSAPP ↗</a>`;
+
+    const picks=matches().slice(0,3);
+    const query=`category=${encodeURIComponent(state.audience)}${state.need!=='all'?'&type='+encodeURIComponent(state.need):''}`;
+
+    if(!picks.length){
+      result.innerHTML=`
+        <div class="finder-result-head">
+          <span>NESSUN MATCH NELLA SELEZIONE ONLINE</span>
+          <button type="button" class="finder-reset" data-finder-reset>RIPARTI ↻</button>
+        </div>
+        <b>Non significa che in store non ci sia. Scrivici: cerchiamo qualcosa per te.</b>
+        <a target="_blank" rel="noopener" href="${whatsapp}">PARLA CON NOI SU WHATSAPP ↗</a>`;
+      bindReset();
+      return;
+    }
+
+    result.innerHTML=`
+      <div class="finder-result-head">
+        <span>IL TUO FLIP / ${picks.length} ${picks.length===1?'PEZZO':'PEZZI'}</span>
+        <button type="button" class="finder-reset" data-finder-reset>RIPARTI ↻</button>
+      </div>
+      <div class="finder-picks">
+        ${picks.map(p=>`
+          <a class="finder-pick" href="product.html?id=${encodeURIComponent(p.id)}">
+            <div class="finder-pick-img">${img(p)}</div>
+            <div class="finder-pick-meta">
+              <small>${e(p.brand)} · ${e(p.category)}</small>
+              <b>${e(p.name)}</b>
+              <span>${FLIPCO.money(p.price)} ↗</span>
+            </div>
+          </a>`).join('')}
+      </div>
+      <a class="finder-all" href="shop.html?${query}">VEDI TUTTA LA SELEZIONE ↗</a>`;
+    bindReset();
   };
+
+  const bindReset=()=>{
+    const reset=result.querySelector('[data-finder-reset]');
+    if(reset) reset.onclick=()=>{
+      state.audience=null;
+      state.need=null;
+      buttons.forEach(b=>b.classList.remove('active'));
+      render();
+    };
+  };
+
+  const img=p=>`<img src="${e(p.image)}" alt="${e(p.brand)} ${e(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/${e(p.art)}'">`;
+
+  const load=async()=>{
+    products=await FLIPCO.load();
+    render();
+  };
+
   buttons.forEach(btn=>btn.addEventListener('click',()=>{
     const group=btn.closest('[data-finder]').dataset.finder;
     state[group]=btn.dataset.value;
-    btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===btn));
+
+    btn.parentElement.querySelectorAll('button')
+      .forEach(x=>x.classList.toggle('active',x===btn));
+
     render();
   }));
+
+  load();
 })();
 
 /* V8 / HERO MOTION */
@@ -68,9 +143,6 @@
     const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0 && p.art);
     if(!ps.length)return;
 
-    /* Use only product artwork already inside the repository.
-       No external brand/CDN images are loaded in the hero.
-       The complete asset is shown with object-fit: contain so the product is never cropped. */
     const card=p=>`<figure class="window-photo">
       <img src="assets/products/${esc(p.art)}" alt="${esc(p.brand)} ${esc(p.name)}" loading="eager">
     </figure>`;
