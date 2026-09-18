@@ -1,109 +1,94 @@
-(async()=>{
-  const e=FLIPCO.esc;
-  const products=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0);
-  if(!products.length)return;
+(()=>{
+  const esc=window.FLIPCO?.esc||((s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
+  const fallback=(p)=>p?.art?`assets/products/${esc(p.art)}`:'';
+  const src=(p)=>p?.image||fallback(p);
+  const img=(p,alt='')=>`<img src="${esc(src(p))}" alt="${esc(alt||`${p?.brand||''} ${p?.name||''}`)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${fallback(p)}'>`;
 
-  const image=(p,priority=false)=>`<img src="${e(p.image||'assets/products/'+p.art)}" alt="${e(p.brand)} ${e(p.name)}" ${priority?'fetchpriority="high"':''} loading="${priority?'eager':'lazy'}" decoding="async" onerror="this.onerror=null;this.src='assets/products/${e(p.art)}'">`;
+  async function boot(){
+    let products=[];
+    try{ products=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0); }catch{}
+    if(!products.length)return;
 
-  const hv=document.querySelector('#homeHeroVisual');
-  const hero=products.find(p=>p.id==='NB9060-ERC'&&p.image)||products.find(p=>p.image)||products[0];
-  if(hv){
-    hv.innerHTML=`${image(hero,true)}<div class="hero-product"><small>${e(hero.brand)} · ${e(hero.category)}</small><b>${e(hero.name)}</b><span>${FLIPCO.money(hero.price)} · DISCOVER ↗</span></div>`;
-  }
+    const by=id=>products.find(p=>p.id===id);
+    const editGrid=document.querySelector('#fxEditGrid');
+    const count=document.querySelector('#fxEditCount');
 
-  const edit=document.querySelector('#editGrid');
-  const meta=document.querySelector('#heroMeta');
+    const card=(p,i)=>`<a class="fx-product-card ${i%2?'fx-offset':''}" href="product.html?id=${encodeURIComponent(p.id)}">
+      <div class="fx-product-image">${img(p)}</div>
+      <div class="fx-product-meta"><small>${esc(p.brand)} · ${esc(p.category)}</small><b>${esc(p.name)}</b><span>${FLIPCO.money(p.price)}</span></div>
+    </a>`;
 
-  function renderEdit(items,label='THE ONLINE EDIT'){
-    if(meta)meta.textContent=`${String(items.length).padStart(2,'0')} PIECES / ${label}`;
-    if(!edit)return;
-    if(!items.length){
-      edit.innerHTML=`<div class="finder-empty-edit"><span>NO EXACT MATCH</span><b>Nessun prodotto corrisponde esattamente alla tua ricerca.</b><a target="_blank" rel="noopener" href="https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20non%20trovo%20quello%20che%20cerco%20nell%27Online%20Edit%20e%20vorrei%20un%20consiglio.">CHIEDI AL TEAM ↗</a></div>`;
-      return;
+    if(editGrid){
+      const edit=products.slice(0,6);
+      editGrid.innerHTML=edit.map(card).join('');
+      if(count)count.textContent=`${String(edit.length).padStart(2,'0')} PIECES / CURATED`;
     }
-    edit.innerHTML=items.slice(0,8).map((p,i)=>`<a class="edit-card ${i%2?'offset':''}" href="product.html?id=${encodeURIComponent(p.id)}"><div class="edit-img">${image(p)}<span class="edit-index">${String(i+1).padStart(2,'0')}</span><span class="edit-badge">${e(p.badge||'SELECTED')}</span></div><div class="edit-meta"><small>${e(p.brand)} · ${e(p.category)}</small><b>${e(p.name)}</b><span>${FLIPCO.money(p.price)} · VIEW ↗</span></div></a>`).join('');
-  }
-  renderEdit(products.slice(0,4));
 
-  const rail=document.querySelector('#rail');
-  if(rail)rail.innerHTML=products.slice(0,8).map((p,i)=>`<a class="rail-card" href="product.html?id=${encodeURIComponent(p.id)}"><div class="rail-no">${String(i+1).padStart(2,'0')}</div><div class="rail-img">${image(p)}</div><div class="rail-info"><small>${e(p.brand)} · ${e(p.category)}</small><b>${e(p.name)}</b><span>${FLIPCO.money(p.price)}</span></div></a>`).join('');
+    const stories=document.querySelector('#fxStories');
+    if(stories){
+      const storyIds=['BARROW-TEE-01','BARROW-DENIM-01','DSQ2-PUFF-KIDS','NB9060-ALP'];
+      const selected=storyIds.map(by).filter(Boolean);
+      stories.innerHTML=selected.map((p,i)=>`<article class="fx-story ${i%2?'fx-story-reverse':''}">
+        <div class="fx-story-media">${img(p)}</div>
+        <div class="fx-story-info">
+          <small>${esc(p.brand)} · ${esc(p.category)}</small>
+          <h2>${esc(p.name.split(' ').slice(0,-1).join(' ')||p.name)}<br><em>${esc(p.name.split(' ').slice(-1)[0])}.</em></h2>
+          <p>${esc(p.description||'Una selezione Flip&Co scelta per l’Online Edit.')}</p>
+          <strong>${FLIPCO.money(p.price)}</strong>
+          <div class="fx-story-actions"><a class="fx-link" href="product.html?id=${encodeURIComponent(p.id)}">VEDI IL PRODOTTO ↗</a></div>
+        </div>
+      </article>`).join('');
+    }
 
-  const result=document.querySelector('#finderResult');
-  const searchBtn=document.querySelector('#finderSearch');
-  const buttons=document.querySelectorAll('[data-finder] button');
-  const selection=document.querySelector('.selection-section');
-
-  if(result&&searchBtn){
     const state={audience:null,need:null};
+    const buttons=document.querySelectorAll('[data-finder] button');
+    const result=document.querySelector('#finderResult');
+    const search=document.querySelector('#finderSearch');
 
     const matches=()=>products.filter(p=>{
       if(!state.audience||!state.need)return false;
-      if(String(p.category).trim().toLowerCase()!==state.audience.trim().toLowerCase())return false;
-      if(state.need==='sneaker')return String(p.type).trim().toLowerCase()==='sneaker';
-      if(state.need==='apparel')return String(p.type).trim().toLowerCase()==='apparel';
-      return state.need==='all';
+      if(String(p.category).toLowerCase()!==String(state.audience).toLowerCase())return false;
+      if(state.need==='all')return true;
+      return String(p.type).toLowerCase()===state.need;
     });
 
     const status=()=>{
-      const ready=state.audience&&state.need;
-      searchBtn.disabled=!ready;
-      searchBtn.classList.toggle('ready',Boolean(ready));
-      const n=Number(Boolean(state.audience))+Number(Boolean(state.need));
-      result.querySelector('span').textContent=n===2
-        ? `02/02 · ${state.audience.toUpperCase()} · ${state.need==='sneaker'?'SNEAKERS':state.need==='apparel'?'CAPI':'SORPRENDETEMI'}`
-        : `${n}/2 RISPOSTE SELEZIONATE`;
+      if(!result||!search)return;
+      const n=Number(!!state.audience)+Number(!!state.need);
+      search.disabled=n!==2;
+      result.querySelector('span').textContent=`${n}/2 RISPOSTE SELEZIONATE`;
       result.querySelector('b').textContent=n===2
-        ? 'Perfetto. Premi cerca: la selezione qui sotto si aggiornerà.'
-        : n===1
-          ? `Perfetto. Ora completa la ricerca.`
-          : 'Dimmi per chi stai cercando e cosa ti serve.';
+        ? 'Perfetto. La tua selezione è pronta.'
+        : n===1 ? 'Perfetto. Completa la seconda scelta.' : 'Dimmi per chi stai cercando e cosa ti serve.';
     };
 
     buttons.forEach(btn=>btn.addEventListener('click',()=>{
       const group=btn.closest('[data-finder]').dataset.finder;
       state[group]=btn.dataset.value;
-      btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===btn));
+      btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn));
       status();
     }));
 
-    searchBtn.addEventListener('click',()=>{
-      if(searchBtn.disabled)return;
+    search?.addEventListener('click',()=>{
       const found=matches();
-      const need=state.need==='sneaker'?'SNEAKERS':state.need==='apparel'?'CAPI':'TUTTO';
-      renderEdit(found,`${state.audience.toUpperCase()} · ${need}`);
-      const h=selection.querySelector('.selection-heading h2');
-      const p=selection.querySelector('.selection-heading p');
-      if(h)h.innerHTML=found.length?`La tua<br><i>selezione.</i>`:`Nessun<br><i>match.</i>`;
-      if(p)p.textContent=found.length
-        ? `${found.length} ${found.length===1?'pezzo corrisponde':'pezzi corrispondono'} esattamente a ${state.audience} · ${need}.`
-        : `Nessun match esatto nell'Online Edit per ${state.audience} · ${need}. In store la selezione è più ampia.`;
-      selection.scrollIntoView({behavior:'smooth',block:'start'});
+      if(editGrid){
+        editGrid.innerHTML=found.length?found.map(card).join(''):`<div class="fx-empty"><span>NO EXACT MATCH</span><b>Nessun match esatto nell'Online Edit.</b><a class="fx-link" target="_blank" rel="noopener" href="https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20non%20trovo%20quello%20che%20cerco%20e%20vorrei%20un%20consiglio.">CHIEDI AL TEAM ↗</a></div>`;
+        if(count)count.textContent=`${String(found.length).padStart(2,'0')} PIECES / YOUR EDIT`;
+      }
+      const target=document.querySelector('#edit');
+      target?.scrollIntoView({behavior:'smooth',block:'start'});
     });
-
     status();
-  }
 
-  const showcase=document.querySelector('#heroShowcase');
-  if(showcase){
-    const ps=products;
-    const card=p=>`<figure class="window-photo">${image(p,true)}</figure>`;
-    const lane=items=>`<div class="window-lane">${items.concat(items).map(card).join('')}</div>`;
-    showcase.innerHTML=lane(ps.slice(0,3))+lane(ps.slice(3,6))+lane(ps.slice(0,3).reverse());
+    /* Product-size mini actions: the actual PDP remains the canonical purchase page. */
+    document.addEventListener('click',e=>{
+      const add=e.target.closest('[data-home-add]');
+      if(!add)return;
+      e.preventDefault();
+      const p=by(add.dataset.homeAdd);
+      const size=add.dataset.size;
+      if(p&&size&&window.FLIPCO_CART) FLIPCO_CART.add(p.id,size,1);
+    });
   }
-
-  document.querySelector('.new-hero')?.classList.add('is-ready');
-
-  /* V22: animation is enhancement only; content is never hidden waiting for JS. */
-  const revealables=document.querySelectorAll('.quick-start,.look-finder,.selection-section,.store-section,.closing-home');
-  const reveal=el=>el.classList.add('section-revealed');
-  if('IntersectionObserver' in window){
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ reveal(entry.target); observer.unobserve(entry.target); }
-      });
-    },{rootMargin:'0px 0px -8% 0px',threshold:.02});
-    revealables.forEach(el=>observer.observe(el));
-  }else{
-    revealables.forEach(reveal);
-  }
+  boot();
 })();
