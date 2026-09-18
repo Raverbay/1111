@@ -6,7 +6,7 @@ const card=p=>`<a class="shop-card" href="product.html?id=${encodeURIComponent(p
 <span>${e(p.badge||'SELECTED')}</span>${p.compareAt?'<i class="sale-dot">SALE</i>':''}</div>
 <div class="shop-meta"><div><small>${e(p.brand)} · ${e(p.category)}</small><b>${e(p.name)}</b></div>
 <strong>${p.compareAt?`<del>${FLIPCO.money(p.compareAt)}</del> `:''}${FLIPCO.money(p.price)}</strong></div></a>`;
-document.querySelector('#shopFilters').innerHTML=`<div class="filter-group"><button data-cat="all">TUTTO</button><button data-cat="Uomo">UOMO</button><button data-cat="Donna">DONNA</button><button data-cat="Kids">KIDS</button></div><div class="shop-sort"><span id="shopCount"></span><button id="clearFilter">RESET ↺</button></div>`;
+document.querySelector('#shopFilters').innerHTML=`<div class="filter-group"><button data-cat="all">ONLINE EDIT</button><button data-cat="Uomo">UOMO</button><button data-cat="Donna">DONNA</button><button data-cat="Kids">KIDS</button></div><div class="shop-sort"><span id="shopCount"></span><button id="clearFilter">RESET ↺</button></div>`;
 const count=document.querySelector('#shopCount');
 function render(){
  let ps=all;

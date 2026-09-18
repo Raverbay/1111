@@ -7,7 +7,7 @@ document.querySelector('#pdp').innerHTML=`<div class="pdp-media"><div class="pdp
 <div class="pdp-info"><div class="pdp-kicker">${e(p.badge||'SELECTED')} · ${e(p.season||'FLIP&CO')}</div>
 <div class="pdp-brand">${e(p.brand)}</div><h1>${e(p.name)}</h1>
 <div class="pdp-price">${p.compareAt?`<del>${FLIPCO.money(p.compareAt)}</del> `:''}${FLIPCO.money(p.price)}</div>
-<p class="pdp-desc">${e(p.description||'Selezionato da Flip&Co Cagliari.')}</p>
+<p class="pdp-desc">${e(p.description||'Selezionato da Flip&Co Cagliari.')}</p><div class="pdp-human"><b>NON SAI SE È QUELLO GIUSTO?</b><span>Scrivici. Ti aiutiamo con taglia, fit e abbinamento.</span><a target="_blank" rel="noopener" href="https://wa.me/393661087819?text=${encodeURIComponent("Ciao Flip&Co, mi aiutate a capire se "+p.brand+" "+p.name+" è giusto per me?")}">PARLA CON NOI ↗</a></div>
 <div class="source-note">Dati prodotto verificati sulla scheda ufficiale del brand · prezzo da ricontrollare prima del go-live.</div>
 <div class="size-head"><span>SELECT SIZE</span><a href="faq.html">SIZE GUIDE ↗</a></div>
 <div class="sizes">${sizes.map(([s,n])=>`<button class="size" data-size="${e(s)}" ${Number(n)<=0?'disabled':''}>${e(s)}${Number(n)<=0?' · SOLD OUT':''}</button>`).join('')}</div>
