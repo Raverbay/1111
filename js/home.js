@@ -3,13 +3,12 @@
   const products=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0);
   if(!products.length)return;
 
-  const image=p=>`<img src="${e(p.image)}" alt="${e(p.brand)} ${e(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/${e(p.art)}'">`;
+  const image=(p,priority=false)=>`<img src="${e(p.image||'assets/products/'+p.art)}" alt="${e(p.brand)} ${e(p.name)}" ${priority?'fetchpriority="high"':''} loading="${priority?'eager':'lazy'}" decoding="async" onerror="this.onerror=null;this.src='assets/products/${e(p.art)}'">`;
 
-  /* Hero product card */
   const hv=document.querySelector('#homeHeroVisual');
-  const hero=products.find(p=>p.id==='NB9060-ERC')||products[0];
+  const hero=products.find(p=>p.id==='NB9060-ERC'&&p.image)||products.find(p=>p.image)||products[0];
   if(hv){
-    hv.innerHTML=`${image(hero)}<div class="hero-product"><small>${e(hero.brand)} · ${e(hero.category)}</small><b>${e(hero.name)}</b><span>${FLIPCO.money(hero.price)} · DISCOVER ↗</span></div>`;
+    hv.innerHTML=`${image(hero,true)}<div class="hero-product"><small>${e(hero.brand)} · ${e(hero.category)}</small><b>${e(hero.name)}</b><span>${FLIPCO.money(hero.price)} · DISCOVER ↗</span></div>`;
   }
 
   const edit=document.querySelector('#editGrid');
@@ -29,7 +28,6 @@
   const rail=document.querySelector('#rail');
   if(rail)rail.innerHTML=products.slice(0,8).map((p,i)=>`<a class="rail-card" href="product.html?id=${encodeURIComponent(p.id)}"><div class="rail-no">${String(i+1).padStart(2,'0')}</div><div class="rail-img">${image(p)}</div><div class="rail-info"><small>${e(p.brand)} · ${e(p.category)}</small><b>${e(p.name)}</b><span>${FLIPCO.money(p.price)}</span></div></a>`).join('');
 
-  /* Finder: two mandatory filters, then one Search action. */
   const result=document.querySelector('#finderResult');
   const searchBtn=document.querySelector('#finderSearch');
   const buttons=document.querySelectorAll('[data-finder] button');
@@ -85,15 +83,13 @@
     status();
   }
 
-  /* Hero window: local repo assets only. */
   const showcase=document.querySelector('#heroShowcase');
   if(showcase){
-    const ps=products.filter(p=>p.art);
-    const card=p=>`<figure class="window-photo"><img src="assets/products/${e(p.art)}" alt="${e(p.brand)} ${e(p.name)}" loading="eager"></figure>`;
+    const ps=products;
+    const card=p=>`<figure class="window-photo">${image(p,true)}</figure>`;
     const lane=items=>`<div class="window-lane">${items.concat(items).map(card).join('')}</div>`;
     showcase.innerHTML=lane(ps.slice(0,3))+lane(ps.slice(3,6))+lane(ps.slice(0,3).reverse());
   }
 
-  /* Never leave the whole hero invisible if an animation is delayed. */
   document.querySelector('.new-hero')?.classList.add('is-ready');
 })();
