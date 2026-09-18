@@ -15,7 +15,7 @@ document.querySelector('#pdp').innerHTML=`<div class="pdp-media"><div class="pdp
 <div id="added" class="added" aria-live="polite"></div>
 <div class="delivery"><div><b>STORE PICKUP</b><span>Gratuito · Cagliari, Via Italia 22</span></div><div><b>SHIPPING</b><span>Disponibile · Italia</span></div></div>
 <details open><summary>DETTAGLI</summary><p>${e(p.material||'Composizione non specificata.')}<br>${e(p.fit||'Vestibilità non specificata.')}<br>Colore: ${e(p.color||'—')}</p></details>
-<details><summary>DISPONIBILITÀ</summary><p>La disponibilità mostrata è una demo dello stock Flip&Co. Prima del go-live va collegata all'inventario reale.</p></details>
+<details><summary>DISPONIBILITÀ</summary><p>La disponibilità online riguarda la selezione dell'Online Edit. In store potresti trovare altri pezzi, taglie e proposte non pubblicate sul sito.</p></details>
 ${p.source?`<a class="official-link" href="${e(p.source)}" target="_blank" rel="noopener">APRI SCHEDA UFFICIALE DEL BRAND ↗</a>`:''}
 <a class="whatsapp-link" href="https://wa.me/393661087819?text=${encodeURIComponent('Ciao Flip&Co, vorrei informazioni su '+p.brand+' '+p.name)}" target="_blank" rel="noopener">HAI BISOGNO DI AIUTO? WHATSAPP ↗</a></div>`;
 let selected='';

@@ -12,3 +12,29 @@
  if(rail) rail.innerHTML=latest.map((p,i)=>`<a class="rail-card" href="product.html?id=${encodeURIComponent(p.id)}"><div class="rail-no">${String(i+1).padStart(2,'0')}</div><div class="rail-img">${img(p)}</div><div class="rail-info"><small>${e(p.brand)} · ${e(p.category)}</small><b>${e(p.name)}</b><span>${FLIPCO.money(p.price)}</span></div></a>`).join('');
  const meta=document.querySelector('#heroMeta'); if(meta) meta.textContent=`${String(ps.length).padStart(2,'0')} PIECES / ONLINE EDIT`;
 })();
+/* V7 / FLIP FINDER */
+(()=>{
+  const result=document.querySelector('#finderResult');
+  const buttons=document.querySelectorAll('[data-finder] button');
+  if(!result||!buttons.length)return;
+  const state={audience:null,need:null};
+  const render=async()=>{
+    const ps=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0);
+    let a=ps.filter(p=>!state.audience||p.category===state.audience);
+    if(state.need&&state.need!=='all')a=a.filter(p=>p.type===state.need);
+    if(!state.audience||!state.need){
+      result.innerHTML='<span>SELEZIONA DUE RISPOSTE</span><b>Costruiamo la tua prima selezione.</b>';
+      return;
+    }
+    const picks=a.slice(0,3);
+    result.innerHTML=picks.length
+      ? `<span>IL TUO FLIP / ${picks.length} PEZZI</span><b>${picks.map(p=>`${e(p.brand)} ${e(p.name)}`).join(' · ')}</b><a href="shop.html?category=${encodeURIComponent(state.audience)}${state.need!=='all'?'&type='+encodeURIComponent(state.need):''}">VEDI LA SELEZIONE ↗</a>`
+      : `<span>NESSUN MATCH IMMEDIATO</span><b>Ti aiutiamo noi a trovare qualcosa.</b><a target="_blank" rel="noopener" href="https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20vorrei%20un%20consiglio%20per%20un%20look.">SCRIVICI SU WHATSAPP ↗</a>`;
+  };
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{
+    const group=btn.closest('[data-finder]').dataset.finder;
+    state[group]=btn.dataset.value;
+    btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===btn));
+    render();
+  }));
+})();
