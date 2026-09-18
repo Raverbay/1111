@@ -39,7 +39,10 @@
       "available": true,
       "art": "nb-9060-erc.svg",
       "description": "9060 in Mushroom / Arid Stone. Mesh e suede, proporzioni Y2K e ammortizzazione ABZORB / SBS.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Uomo"
     },
     {
       "id": "NB9060-ALP",
@@ -79,7 +82,10 @@
       "available": true,
       "art": "nb-9060-3eg.svg",
       "description": "9060 in Linen / Sea Salt con suola Gum. Una seconda silhouette neutra per la selezione sneakers.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Donna"
     },
     {
       "id": "BARROW-TEE-01",
@@ -111,7 +117,10 @@
       "available": true,
       "art": "barrow-tee.svg",
       "description": "Barrow Jersey T-Shirt in cotone, fit morbido e grafica tono su tono.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Uomo"
     },
     {
       "id": "BARROW-HOODIE-01",
@@ -141,7 +150,10 @@
       "available": true,
       "art": "barrow-hoodie.svg",
       "description": "Barrow Iconic Hoodie in 100% cotone, logo oversize sulle maniche e smile patch.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Uomo"
     },
     {
       "id": "BARROW-DENIM-01",
@@ -175,7 +187,10 @@
       "available": true,
       "art": "barrow-denim.svg",
       "description": "Barrow Denim Jeans in denim di cotone, vita regolare e vestibilità baggy.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Donna"
     },
     {
       "id": "MOSCHINO-TEDDY-TEE",
@@ -211,7 +226,10 @@
       "available": true,
       "art": "moschino-tee.svg",
       "description": "Teddy Bear Oversized Cotton Jersey T-Shirt. 95% cotone, 5% elastan, stampa Teddy Bear.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Kids"
     },
     {
       "id": "MOSCHINO-TEDDY-HOODIE",
@@ -247,7 +265,10 @@
       "available": true,
       "art": "moschino-hoodie.svg",
       "description": "Teddy Bear Cotton Sweatshirt in 100% cotone, con stampa logo e Teddy Bear.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Kids"
     },
     {
       "id": "DSQ2-PUFF-KIDS",
@@ -285,7 +306,10 @@
       "available": true,
       "art": "dsq-puffer.svg",
       "description": "D2Kids Junior Down Jacket in nylon lucido trapuntato, cappuccio, tasche con zip e logo sul retro.",
-      "compareAt": null
+      "compareAt": null,
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Kids"
     },
     {
       "id": "DSQ2-JEANS-KIDS",
@@ -323,7 +347,10 @@
       "type": "apparel",
       "available": true,
       "art": "barrow-denim.svg",
-      "description": "Jeans cinque tasche D2Kids Junior in denim stretch, lavaggio faded e iconica etichetta rossa Dsquared2."
+      "description": "Jeans cinque tasche D2Kids Junior in denim stretch, lavaggio faded e iconica etichetta rossa Dsquared2.",
+      "onlineEdit": true,
+      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
+      "audience": "Kids"
     }
   ]
 }
