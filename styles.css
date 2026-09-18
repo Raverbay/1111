@@ -529,3 +529,481 @@ body{background:var(--paper);letter-spacing:-.012em}
   .window-photo img{object-fit:contain!important}
   .new-hero:after{background:linear-gradient(180deg,rgba(10,10,9,.30),rgba(10,10,9,.03) 52%,rgba(10,10,9,.20))!important}
 }
+
+
+/* =========================================================
+   FLIP&CO V15 — PREMIUM EDITORIAL ART DIRECTION
+   Direction: luxury multi-brand retail / quiet confidence
+   ========================================================= */
+
+/* --- 01 / HERO: light, architectural, product-led --- */
+.new-hero{
+  position:relative!important;
+  min-height:calc(100svh - 102px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr)!important;
+  overflow:hidden!important;
+  background:var(--paper)!important;
+  color:var(--ink)!important;
+}
+.new-hero .hero-backdrop{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:
+    radial-gradient(circle at 78% 42%,rgba(255,255,255,.9),transparent 34%),
+    linear-gradient(105deg,#f1eee8 0%,#eeebe4 52%,#e7e2da 100%)!important;
+}
+.new-hero:after{
+  display:none!important;
+}
+.hero-copy{
+  position:relative!important;
+  z-index:30!important;
+  grid-column:1!important;
+  min-height:calc(100svh - 102px)!important;
+  padding:clamp(48px,6vw,96px) clamp(28px,5vw,90px) clamp(42px,6vw,80px) max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)))!important;
+  justify-content:center!important;
+  color:var(--ink)!important;
+}
+.hero-copy .section-line{
+  color:rgba(10,10,10,.48)!important;
+  border-color:rgba(10,10,10,.18)!important;
+}
+.hero-kicker{
+  color:rgba(10,10,10,.55)!important;
+  margin-top:clamp(42px,7vw,86px)!important;
+}
+.new-hero h1{
+  color:var(--ink)!important;
+  text-shadow:none!important;
+  max-width:760px!important;
+  font-size:clamp(66px,8.3vw,145px)!important;
+  line-height:.79!important;
+  letter-spacing:-.095em!important;
+  margin:22px 0 28px!important;
+}
+.new-hero h1 i{color:#77736d!important}
+.hero-lead{
+  color:rgba(10,10,10,.64)!important;
+  max-width:510px!important;
+  font-size:clamp(16px,1.45vw,20px)!important;
+  line-height:1.34!important;
+}
+.hero-copy .button.dark{
+  background:var(--ink)!important;
+  color:#fff!important;
+  box-shadow:0 12px 35px rgba(10,10,10,.10)!important;
+}
+.hero-copy .text-link{
+  color:var(--ink)!important;
+}
+.hero-actions{gap:22px!important;margin-top:30px!important}
+
+.hero-showcase{
+  position:absolute!important;
+  left:50%!important;
+  right:0!important;
+  top:0!important;
+  bottom:0!important;
+  z-index:4!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:1px!important;
+  background:rgba(10,10,10,.10)!important;
+  opacity:1!important;
+  transition:none!important;
+}
+.hero-showcase:before,
+.hero-showcase:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  z-index:8!important;
+}
+.hero-showcase:before{
+  background:linear-gradient(90deg,rgba(241,238,232,.74),rgba(241,238,232,.08) 24%,transparent 100%)!important;
+}
+.hero-showcase:after{
+  background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 24%,rgba(10,10,10,.08) 100%)!important;
+}
+.window-lane{
+  min-width:0!important;
+  height:max-content!important;
+  animation-duration:38s!important;
+}
+.window-photo{
+  height:54vh!important;
+  min-height:380px!important;
+  background:#f8f6f1!important;
+  border:0!important;
+}
+.window-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:clamp(18px,3vw,48px)!important;
+  transform:none!important;
+  filter:none!important;
+  mix-blend-mode:multiply!important;
+}
+.hero-visual{
+  grid-column:2!important;
+  position:relative!important;
+  z-index:20!important;
+  min-height:calc(100svh - 102px)!important;
+  background:transparent!important;
+}
+.hero-overlay{
+  inset:24px!important;
+  color:rgba(10,10,10,.62)!important;
+}
+.hero-overlay span:last-child{opacity:.7}
+
+/* --- 02 / THE IDEA: more gallery-like, less generic --- */
+.human-intro{
+  padding-top:clamp(100px,11vw,175px)!important;
+  padding-bottom:clamp(95px,11vw,170px)!important;
+}
+.human-grid{
+  align-items:end!important;
+  margin-top:55px!important;
+}
+.human-grid h2{
+  max-width:950px!important;
+  font-size:clamp(54px,6.7vw,108px)!important;
+}
+.human-grid p{
+  font-size:clamp(17px,1.55vw,21px)!important;
+  line-height:1.38!important;
+}
+.human-grid .muted{
+  font-size:12px!important;
+  letter-spacing:.02em!important;
+}
+
+/* --- 03 / START HERE: editorial index instead of four cards --- */
+.quick-start{
+  padding-top:clamp(80px,9vw,135px)!important;
+  padding-bottom:clamp(100px,12vw,180px)!important;
+}
+.quick-head{
+  align-items:end!important;
+  margin:48px 0 58px!important;
+}
+.quick-head h2{
+  font-size:clamp(62px,7.4vw,118px)!important;
+}
+.quick-head p{
+  font-size:17px!important;
+  line-height:1.4!important;
+}
+.quick-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:0!important;
+  background:transparent!important;
+  border:0!important;
+  border-top:1px solid rgba(10,10,10,.8)!important;
+}
+.quick-grid a{
+  position:relative!important;
+  min-height:210px!important;
+  padding:24px 26px 26px 0!important;
+  border-bottom:1px solid rgba(10,10,10,.8)!important;
+  background:transparent!important;
+  transition:padding-left .45s var(--ease),background .45s var(--ease),color .45s var(--ease)!important;
+}
+.quick-grid a:nth-child(odd){
+  border-right:1px solid rgba(10,10,10,.8)!important;
+  padding-right:28px!important;
+}
+.quick-grid a:nth-child(even){padding-left:28px!important}
+.quick-grid a:hover{
+  background:transparent!important;
+  color:var(--ink)!important;
+  transform:none!important;
+  padding-left:10px!important;
+}
+.quick-grid a:nth-child(even):hover{padding-left:38px!important}
+.quick-grid span{
+  color:var(--muted)!important;
+}
+.quick-grid b{
+  font-size:clamp(34px,4.1vw,64px)!important;
+  letter-spacing:-.07em!important;
+}
+.quick-grid em{
+  color:var(--muted)!important;
+  margin-top:auto!important;
+}
+
+/* --- 04 / FINDER: premium black, but with breathing room --- */
+.look-finder{
+  padding:clamp(95px,11vw,165px) 0!important;
+}
+.finder-shell{
+  gap:clamp(50px,8vw,120px)!important;
+}
+.finder-copy h2{
+  font-size:clamp(62px,7.5vw,118px)!important;
+}
+.finder-buttons button{
+  padding:15px 18px!important;
+  border-color:rgba(255,255,255,.26)!important;
+}
+.finder-result{
+  padding-top:34px!important;
+}
+.finder-result b{
+  font-size:clamp(20px,2vw,28px)!important;
+}
+
+/* --- 05 / ONLINE EDIT: stronger art direction --- */
+.selection-section{
+  padding-top:clamp(100px,11vw,170px)!important;
+  padding-bottom:clamp(110px,13vw,190px)!important;
+}
+.selection-heading{
+  align-items:end!important;
+  margin-bottom:58px!important;
+}
+.selection-heading h2{
+  font-size:clamp(56px,6.7vw,105px)!important;
+}
+.selection-heading p{
+  font-size:17px!important;
+  line-height:1.4!important;
+}
+.edit-grid{
+  gap:20px!important;
+}
+.edit-card.offset{margin-top:130px!important}
+.edit-img{
+  background:#faf8f3!important;
+}
+.edit-card img{
+  object-fit:contain!important;
+  padding:18px!important;
+  mix-blend-mode:multiply!important;
+}
+.edit-meta{
+  padding-top:15px!important;
+}
+.edit-meta b{
+  font-size:clamp(22px,2.5vw,38px)!important;
+}
+
+/* --- 06 / PERSONAL EDIT: make service feel bespoke --- */
+.look-section{
+  background:#e7e1d8!important;
+  padding:clamp(100px,11vw,165px) 0 clamp(110px,13vw,185px)!important;
+}
+.look-head{
+  align-items:end!important;
+}
+.look-head h2{
+  font-size:clamp(66px,8vw,128px)!important;
+}
+.look-head p{
+  font-size:17px!important;
+  line-height:1.42!important;
+}
+.look-options{
+  margin-top:65px!important;
+}
+.look-options>div{
+  min-height:340px!important;
+  padding:30px!important;
+  transition:background .35s ease!important;
+}
+.look-options>div:hover{background:#f1eee8!important}
+
+/* --- 07 / CURRENTLY: product rail as fashion showroom --- */
+.rail-section{
+  padding-top:clamp(105px,12vw,180px)!important;
+  padding-bottom:clamp(120px,14vw,205px)!important;
+}
+.rail-section .rail-head{
+  margin-bottom:45px!important;
+}
+.rail-head h2{
+  font-size:clamp(58px,7vw,108px)!important;
+}
+.rail{
+  gap:18px!important;
+  padding-top:35px!important;
+}
+.rail-img{
+  background:#faf8f3!important;
+}
+.rail-img img{
+  object-fit:contain!important;
+  padding:14px!important;
+  mix-blend-mode:multiply!important;
+}
+
+/* --- 08 / STORE: stronger magazine split --- */
+.store-section{
+  background:#ded8ce!important;
+}
+.store-photo{
+  min-height:clamp(560px,48vw,760px)!important;
+}
+.store-photo img{
+  filter:none!important;
+}
+.store-copy{
+  padding:clamp(42px,6vw,90px)!important;
+}
+.store-copy h2{
+  font-size:clamp(55px,6.8vw,105px)!important;
+}
+.store-copy p{
+  font-size:17px!important;
+  line-height:1.3!important;
+}
+
+/* --- 09 / CLOSING: quiet luxury, not oversized promo --- */
+.closing-home{
+  padding:clamp(100px,13vw,190px) 0!important;
+}
+.closing-home h2{
+  font-size:clamp(92px,13vw,215px)!important;
+  line-height:.66!important;
+}
+.closing-home h2 i{color:#77736d!important}
+
+/* --- header refinement --- */
+.header{
+  background:rgba(241,238,232,.82)!important;
+  backdrop-filter:blur(22px)!important;
+  border-bottom-color:rgba(10,10,10,.12)!important;
+}
+.utility{
+  background:#111!important;
+  letter-spacing:.12em!important;
+}
+.desktop-nav{gap:30px!important}
+
+/* --- tactile details --- */
+.button{
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)!important;
+}
+.button:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 12px 28px rgba(10,10,10,.12)!important;
+}
+.arrow,.text-link{
+  transition:opacity .25s ease,letter-spacing .35s ease!important;
+}
+.arrow:hover,.text-link:hover{
+  opacity:.65!important;
+  letter-spacing:.14em!important;
+}
+
+/* --- mobile: preserve product visibility and simplify --- */
+@media(max-width:800px){
+  .new-hero{
+    min-height:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    background:var(--paper)!important;
+  }
+  .hero-showcase{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    order:1!important;
+    width:100%!important;
+    height:58svh!important;
+    min-height:430px!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    background:rgba(10,10,10,.08)!important;
+  }
+  .hero-showcase:before{
+    background:linear-gradient(180deg,rgba(241,238,232,.08),rgba(241,238,232,.34))!important;
+  }
+  .window-lane:nth-child(3){display:none!important}
+  .window-lane{animation-duration:34s!important}
+  .window-photo{
+    height:46svh!important;
+    min-height:390px!important;
+  }
+  .window-photo img{
+    padding:14px!important;
+    object-fit:contain!important;
+  }
+  .hero-copy{
+    order:2!important;
+    min-height:0!important;
+    padding:58px var(--pad) 68px!important;
+    color:var(--ink)!important;
+  }
+  .hero-copy .section-line{
+    color:rgba(10,10,10,.5)!important;
+  }
+  .hero-kicker{
+    margin-top:34px!important;
+  }
+  .new-hero h1{
+    font-size:clamp(58px,15vw,88px)!important;
+    line-height:.8!important;
+    margin:18px 0 24px!important;
+  }
+  .hero-lead{
+    font-size:17px!important;
+    max-width:520px!important;
+  }
+  .hero-actions{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+    gap:18px!important;
+  }
+  .hero-visual{
+    display:none!important;
+  }
+  .quick-grid{
+    grid-template-columns:1fr!important;
+  }
+  .quick-grid a,
+  .quick-grid a:nth-child(odd),
+  .quick-grid a:nth-child(even){
+    min-height:165px!important;
+    padding:21px 0!important;
+    border-right:0!important;
+  }
+  .quick-grid a:hover,
+  .quick-grid a:nth-child(even):hover{
+    padding-left:0!important;
+  }
+  .quick-grid b{
+    font-size:38px!important;
+  }
+  .edit-grid{
+    grid-template-columns:1fr!important;
+    gap:42px!important;
+  }
+  .edit-card.offset{margin-top:0!important}
+  .edit-card img{padding:12px!important}
+  .look-options{
+    grid-template-columns:1fr!important;
+  }
+  .look-options>div{
+    min-height:260px!important;
+  }
+  .store-section{
+    grid-template-columns:1fr!important;
+  }
+  .store-photo{min-height:440px!important}
+  .closing-home h2{
+    font-size:clamp(86px,23vw,145px)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .window-lane{animation:none!important}
+}
