@@ -26,3 +26,11 @@
 - Added “Ti facciamo il look” service with in-store and WhatsApp paths.
 - Reworked homepage hierarchy, copy, CTA system and responsive art direction.
 - Added PDP human-assistance block and stronger store bridge.
+
+
+## V7 — Discovery Homepage
+- Added stronger personality and customer-first entry points.
+- Added quick paths for Uomo / Donna / Kids and “Ti facciamo il look”.
+- Added interactive Flip Finder to create a first micro-selection.
+- Reinforced Online Edit vs broader store selection narrative.
+- Added responsive interaction styling and stronger conversion paths.
