@@ -250,3 +250,18 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
  .f29-brand-wall,.f29-finder,.f29-close{padding:90px 0}
  .f29-finder-grid{grid-template-columns:1fr}.f29-story-actions{align-items:flex-start;flex-direction:column}
 }
+
+/* V35.2 — Finder response flows DOWN after the two choices */
+.f29-finder .f29-finder-grid{margin-bottom:0}
+.f29-finder .f29-result{display:block;width:100%;margin-top:clamp(54px,7vw,100px);padding:28px 0 0;border-top:1px solid rgba(17,17,15,.22);color:var(--ink);scroll-margin-top:88px}
+.f29-finder .f29-result-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+.f29-finder .f29-result-head small{font:10px var(--mono);letter-spacing:.12em;color:var(--muted)}
+.f29-finder .f29-result-head strong{font-family:var(--display);font-size:clamp(24px,3vw,42px);font-weight:500;letter-spacing:-.045em;line-height:1}
+.f29-finder-selection{margin-top:30px}
+.f29-finder-picked{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.f29-finder-picked .f29-product-card:nth-child(2),.f29-finder-picked .f29-product-card:nth-child(4){margin-top:0}
+.f29-finder-more{display:inline-block;margin-top:28px;font:10px var(--mono);letter-spacing:.1em;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:5px}
+.f29-finder-empty{font-size:16px;line-height:1.45;color:var(--muted);max-width:520px}
+.f29-finder .f29-fstep button{color:var(--ink);border-color:rgba(17,17,15,.25);background:transparent}
+.f29-finder .f29-fstep button:hover,.f29-finder .f29-fstep button.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media(max-width:900px){.f29-finder .f29-result{margin-top:58px;padding-top:24px}.f29-finder .f29-result-head{display:block}.f29-finder .f29-result-head strong{display:block;margin-top:10px;font-size:34px}.f29-finder-picked{grid-template-columns:1fr 1fr;gap:20px 8px}.f29-finder-picked .f29-product-card:nth-child(2),.f29-finder-picked .f29-product-card:nth-child(4){margin-top:32px}}
