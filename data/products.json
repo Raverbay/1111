@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-19",
+  "version": "2026-09-19-v28",
   "warehouse": "FLIPCO-CAGLIARI",
   "model": "single_inventory",
   "products": [
@@ -42,7 +42,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Uomo"
+      "audience": "Uomo",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Unisex",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "NB9060-ALP",
@@ -85,7 +88,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Donna"
+      "audience": "Donna",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Unisex",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "BARROW-TEE-01",
@@ -120,7 +126,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Uomo"
+      "audience": "Uomo",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Relaxed",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "BARROW-HOODIE-01",
@@ -153,7 +162,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Uomo"
+      "audience": "Uomo",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "BARROW-DENIM-01",
@@ -190,7 +202,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Donna"
+      "audience": "Donna",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Baggy",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "MOSCHINO-TEDDY-TEE",
@@ -229,7 +244,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Kids"
+      "audience": "Kids",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Maxi",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "MOSCHINO-TEDDY-HOODIE",
@@ -268,7 +286,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Kids"
+      "audience": "Kids",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "DSQ2-PUFF-KIDS",
@@ -309,7 +330,10 @@
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Kids"
+      "audience": "Kids",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "DSQ2-JEANS-KIDS",
@@ -345,12 +369,15 @@
       "source": "https://www.dsquared2.com/it/jeans-d2kids-junior/DQ03LDD0AHXDQ01.html",
       "type": "apparel",
       "available": true,
-      "art": "barrow-denim.svg",
+      "art": "dsq-jeans.svg",
       "description": "Jeans cinque tasche D2Kids Junior in denim stretch, lavaggio faded e iconica etichetta rossa Dsquared2.",
       "compareAt": null,
       "onlineEdit": true,
       "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Kids"
+      "audience": "Kids",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Slim",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-940-MLB-YANKEES",
@@ -364,7 +391,7 @@
       "material": null,
       "fit": null,
       "season": null,
-      "badge": "FLI&CO EDIT",
+      "badge": "EDIT",
       "image": "https://flipeco.it/cdn/shop/products/22033-940-League-Essential-Mlb-Neyyan-NERO-940-League-Essential-Mlb-Neyyan-NERO.webp?v=1680347482&width=533",
       "source": "https://flipeco.it/products/940-league-essential-mlb-new-york-yankees",
       "type": "accessory",
@@ -373,9 +400,12 @@
       "compareAt": null,
       "audience": "Unisex",
       "stock": {},
-      "art": null,
+      "art": "newera-940.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular fit",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-9FORTY-LAKERS",
@@ -389,7 +419,7 @@
       "material": null,
       "fit": "Regolabile",
       "season": null,
-      "badge": "FLI&CO EDIT",
+      "badge": "EDIT",
       "image": "https://flipeco.it/cdn/shop/files/la-dodgers-neon-outline-white-9forty-adjustable-cap-60358129-left.jpg?v=1682874599&width=533",
       "source": "https://flipeco.it/products/9forty-cappellino-9forty-regolabile-la-lakers-neon-outline-bianco-9forty-colore",
       "type": "accessory",
@@ -398,9 +428,12 @@
       "compareAt": null,
       "audience": "Unisex",
       "stock": {},
-      "art": null,
+      "art": "newera-lakers.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regolabile",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-GCDS-BAND-MAN",
@@ -414,7 +447,7 @@
       "material": null,
       "fit": null,
       "season": null,
-      "badge": "FLI&CO EDIT",
+      "badge": "EDIT",
       "image": "https://flipeco.it/cdn/shop/files/GCDSMAGLIABANDLOGO.webp?v=1778945324&width=533",
       "source": "https://flipeco.it/products/band-logo-gcds-man",
       "type": "apparel",
@@ -423,9 +456,12 @@
       "compareAt": null,
       "audience": "Uomo",
       "stock": {},
-      "art": null,
+      "art": "gcds-band.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular fit",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-GCDS-BERMUDA",
@@ -439,7 +475,7 @@
       "material": null,
       "fit": null,
       "season": null,
-      "badge": "FLI&CO EDIT",
+      "badge": "EDIT",
       "image": "https://flipeco.it/cdn/shop/files/BERMUDAGCDS.webp?v=1778945996&width=533",
       "source": "https://flipeco.it/products/bermuda-band-logo-gcds",
       "type": "apparel",
@@ -448,9 +484,12 @@
       "compareAt": null,
       "audience": "Uomo",
       "stock": {},
-      "art": null,
+      "art": "gcds-bermuda.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular fit",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-PINKO-LOVE-BAG",
@@ -466,7 +505,7 @@
       "material": "Pelle di pecora 100% / accessorio zinco 100% / fodera nylon 50% poliureica 50%",
       "fit": null,
       "season": null,
-      "badge": "FLI&CO EDIT",
+      "badge": "EDIT",
       "image": "https://flipeco.it/cdn/shop/files/100037A0F2-Z99Q-03.jpg?v=1712682220&width=1445",
       "source": "https://flipeco.it/products/big-love-bag-puff-maxi-quilt",
       "type": "bag",
@@ -475,10 +514,13 @@
       "compareAt": null,
       "audience": "Donna",
       "stock": {},
-      "art": null,
+      "art": "pinko-love-bag.svg",
       "onlineEdit": true,
       "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
-      "dimensions": "Non pubblicate nella pagina Fli&Co indicizzata"
+      "dimensions": "Non pubblicate nella pagina Fli&Co indicizzata",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular fit",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-BOMBER-BASEBALL-PROPAGANDA",
@@ -501,9 +543,12 @@
       "compareAt": 212,
       "audience": "Uomo",
       "stock": {},
-      "art": null,
+      "art": "propaganda-bomber.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular fit",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-SPRYGROUND-BOXER",
@@ -517,18 +562,21 @@
       "material": null,
       "fit": null,
       "season": null,
-      "badge": "FLI&CO EDIT",
+      "badge": "EDIT",
       "image": "https://flipeco.it/cdn/shop/files/pe26-sprayground-910swm205454.webp?v=1783768412&width=533",
       "source": "https://flipeco.it/products/boxer-mare-spry-ground",
       "type": "swimwear",
       "available": true,
       "description": "Boxer mare Sprayground.",
-      "compareAt": 75,
+      "compareAt": null,
       "audience": "Uomo",
       "stock": {},
-      "art": null,
+      "art": "sprayground-boxer.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Regular fit",
+      "care": "Segui sempre l’etichetta del capo."
     },
     {
       "id": "FLI-BARROW-SOCKS-KIDS",
@@ -554,9 +602,12 @@
       "compareAt": null,
       "audience": "Kids",
       "stock": {},
-      "art": null,
+      "art": "barrow-socks.svg",
       "onlineEdit": true,
-      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare."
+      "selectionNote": "Importato come riferimento catalogo pubblico Fli&Co; disponibilità da verificare.",
+      "editorial": "Selected for the Flip&Co Online Edit.",
+      "fitNote": "Altezza regolare",
+      "care": "Segui sempre l’etichetta del capo."
     }
   ]
 }
