@@ -903,3 +903,42 @@ body{font-family:'Instrument Sans',Arial,sans-serif!important;background:var(--p
 @media(max-width:700px){
  .page-hero{padding-top:70px!important}.shop-grid{gap:40px 8px!important}.pdp-info{padding:28px 16px 90px!important}.checkout,.confirmation,.legal{padding-top:70px!important}.confirm-grid p{font-size:17px!important}
 }
+
+/* V35.1 — HEADER POLISH / MOBILE NAV FIX */
+.menu-btn{
+  width:32px !important;
+  height:32px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  gap:7px !important;
+}
+.menu-btn i{
+  width:25px !important;
+  height:1px !important;
+  background:var(--ink) !important;
+  display:block !important;
+}
+.menu-btn:focus-visible{
+  outline:1px solid var(--ink) !important;
+  outline-offset:6px !important;
+}
+.bag b{
+  background:transparent !important;
+  color:var(--ink) !important;
+  padding:0 !important;
+  border-radius:0 !important;
+  font-size:8px !important;
+  line-height:1 !important;
+  transform:translateY(-2px);
+}
+@media(max-width:560px){
+  .menu-btn{width:30px !important;height:30px !important;}
+  .menu-btn i{width:24px !important;}
+}
