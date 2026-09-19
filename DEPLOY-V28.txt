@@ -1,0 +1,7 @@
+FLIP&CO V28 — FINAL PREMIUM / FULL SITE
+
+Sovrascrivere l’intera cartella 1111 con il contenuto del pacchetto.
+Non serve mantenere i vecchi JS/CSS: V28 include shell, home, shop, collections, brand index, product pages, cart, checkout demo e info pages.
+
+IMPORTANTE: il checkout è ancora una richiesta ordine demo, non un pagamento reale.
+Hard refresh dopo il deploy.

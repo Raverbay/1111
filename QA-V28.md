@@ -1,0 +1,12 @@
+# V28 QA
+- 17 prodotti JSON validi
+- local fallback art per gli 8 importati
+- badge FLI&CO rimossi
+- DSQ2 jeans art corretto
+- sale mostrato solo con compareAt > price
+- Finder Uomo/Donna/Kids + type
+- Unisex escluso da Kids Finder
+- Product detail page completa con gallery, taglie, bag e WhatsApp
+- Shared header/footer/search/cart su tutte le pagine
+- Shop, Collections, Collection, Brands, Info, Checkout, Confirmation aggiornati
+- nessuna dipendenza da vecchi JS in data/
