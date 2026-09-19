@@ -20,7 +20,7 @@ async function boot(){
  const heroSlides=[
   {image:'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=88',brand:'FLIP&CO',name:'THE EDIT',price:'CAGLIARI',link:'shop.html'},
   {image:'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=88',brand:'WOMEN / MEN / KIDS',name:'SELECTED NOW',price:'ONLINE EDIT',link:'shop.html'},
-  {image:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=88',brand:'CAGLIARI / ITALIA',name:'NEW SEASON',price:'DEMO CAMPAIGN',link:'collections.html'}
+  {image:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=88',brand:'CAGLIARI / ITALIA',name:'NEW SEASON',price:'NEW SEASON',link:'collections.html'}
  ];
  let hi=0;
  const himg=document.querySelector('#heroImg'),hbrand=document.querySelector('#heroBrand'),hname=document.querySelector('#heroName'),hprice=document.querySelector('#heroPrice'),hlink=document.querySelector('#heroLink'),hidx=document.querySelector('#heroIndex'),dots=[...document.querySelectorAll('.f29-showcase-controls i')];
