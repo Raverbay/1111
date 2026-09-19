@@ -68,3 +68,62 @@ body{font-weight:400;letter-spacing:-.012em}
 .loader-mark{font-family:var(--display)!important;font-weight:600!important}
 .loader-line i{background:var(--gold)!important}
 @media(max-width:900px){.f29-hero-title,.f31-campaign-head h2,.f32-journal-head h2,.f32-service-intro h2{font-weight:600!important}}
+
+/* =========================================================
+   FLIP&CO V34 — MODERN ITALIAN FASHION / FINAL ART DIRECTION
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..600&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap');
+:root{
+ --v34-paper:#F4F1EA;--v34-surface:#FBFAF6;--v34-ink:#0C0C0B;--v34-muted:#77736C;
+ --v34-line:rgba(12,12,11,.13);--v34-dark:#10100F;--v34-accent:#A46B4C;
+ --display:'Instrument Sans',Arial,sans-serif;--serif:'Instrument Serif',Georgia,serif;--mono:'DM Mono',monospace;
+}
+html,body{background:var(--v34-paper)!important;color:var(--v34-ink)!important;font-family:var(--display)!important}
+body{font-weight:400;letter-spacing:-.018em}
+::selection{background:var(--v34-ink);color:var(--v34-paper)}
+.flip29-home,.f29-home{background:var(--v34-paper)!important;color:var(--v34-ink)!important}
+.f29-hero{min-height:calc(100svh - 102px)!important;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)!important;background:var(--v34-paper)!important;border-bottom:1px solid var(--v34-line)}
+.f29-hero-left{padding:28px clamp(22px,4vw,64px) 22px!important}
+.f29-overline,.f29-hero-meta,.f29-label,.f29-showcase-top,.f29-showcase-controls,.f29-mini{font-family:var(--mono)!important;font-size:8px!important;letter-spacing:.16em!important}
+.f29-hero-title{font-family:var(--display)!important;font-size:clamp(72px,9.3vw,158px)!important;font-weight:500!important;line-height:.77!important;letter-spacing:-.09em!important;margin-top:10vh!important}
+.f29-hero-title em{font-family:var(--serif)!important;color:var(--v34-ink)!important;font-style:italic;font-weight:400!important;letter-spacing:-.04em!important}
+.f29-hero-lead{max-width:410px!important;font-size:15px!important;line-height:1.45!important;color:#373532!important}
+.f29-btn{background:var(--v34-ink)!important;border-color:var(--v34-ink)!important;color:var(--v34-paper)!important;padding:16px 18px!important;font-size:8px!important;letter-spacing:.14em!important}
+.f29-btn:hover{background:var(--v34-accent)!important;border-color:var(--v34-accent)!important;transform:translateY(-2px)!important}
+.f29-textlink,.f29-underlink{font-size:8px!important;letter-spacing:.14em!important;border-bottom-color:currentColor!important}
+.f29-hero-meta{border-color:var(--v34-line)!important;color:#55514B}
+.f29-showcase{min-height:calc(100svh - 102px)!important;background:#d6d0c7!important}
+.f29-showcase-image:after{background:linear-gradient(180deg,rgba(0,0,0,.08),transparent 52%,rgba(0,0,0,.5))!important}
+.f29-showcase-image img{filter:saturate(.88) contrast(1.02)!important}
+.f29-showcase-caption strong{font-family:var(--display)!important;font-weight:500!important;letter-spacing:-.065em!important}
+.f29-showcase-caption b{font-family:var(--mono)!important;font-size:10px!important;letter-spacing:.08em}
+.f29-showcase-controls button{border-radius:0!important;width:40px!important;height:40px!important}
+.f29-showcase-controls button:hover{background:var(--v34-paper)!important;border-color:var(--v34-paper)!important;color:var(--v34-ink)!important}
+.f29-ticker{background:var(--v34-ink)!important;color:var(--v34-paper)!important;padding:10px 0!important}
+.f29-ticker b{color:var(--v34-accent)!important}
+.f31-campaign,.f32-journal,.f29-intro,.f29-tiles,.f29-story{background:var(--v34-paper)!important}
+.f31-campaign{padding-top:120px!important}
+.f31-campaign-head h2,.f32-journal-head h2,.f32-service-intro h2,.f29-intro h2,.f29-edit-head h2,.f29-brand-intro h2,.f29-finder h2,.f29-story-copy h2,.f29-close h2{font-family:var(--display)!important;font-weight:500!important;letter-spacing:-.09em!important}
+.f31-campaign-head h2 em,.f32-journal-head h2 em,.f32-service-intro h2 em,.f29-intro h2 em,.f29-edit-head h2 em,.f29-brand-intro h2 em,.f29-finder h2 em,.f29-story-copy h2 em,.f29-close h2 em{font-family:var(--serif)!important;color:var(--v34-ink)!important;font-style:italic!important;font-weight:400!important}
+.f31-campaign-head p,.f32-journal-head p{color:var(--v34-muted)!important;font-size:15px!important}
+.f31-campaign-card{border-radius:0!important;filter:none!important}
+.f31-campaign-card:after{background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.62))!important}
+.f31-campaign-card>b{font-family:var(--display)!important;font-weight:500!important}
+.f31-campaign-card>b em{font-family:var(--serif)!important;color:#fff!important;font-style:italic}
+.f32-journal-main>b{font-family:var(--display)!important;font-weight:500!important}.f32-journal-main>b em{font-family:var(--serif)!important;color:#fff!important}
+.f32-service-band{background:var(--v34-ink)!important;color:var(--v34-paper)!important}
+.f32-service-intro h2 em{color:var(--v34-paper)!important}
+.f32-service-grid{background:rgba(244,241,234,.16)!important}.f32-service-grid>div{background:var(--v34-ink)!important}.f32-service-grid b{color:var(--v34-accent)!important}
+.f29-brand-wall{background:var(--v34-ink)!important;color:var(--v34-paper)!important}
+.f29-brand-intro h2 em{color:var(--v34-paper)!important}
+.f29-marquee i{color:var(--v34-accent)!important}
+.f29-finder{background:#171715!important}.f29-finder h2 em{color:var(--v34-paper)!important}.f29-finder .f29-mini{color:var(--v34-accent)!important}
+.f29-fstep button{border-color:rgba(244,241,234,.22)!important}.f29-fstep button:hover,.f29-fstep button.active{background:var(--v34-paper)!important;color:var(--v34-ink)!important;border-color:var(--v34-paper)!important}
+.f29-result.is-ready{border-top-color:var(--v34-paper)!important}.f29-result.is-ready:after{color:var(--v34-accent)!important}
+.f29-story{padding-top:130px!important}.f29-story-image{background:#ddd!important}
+.f29-story-copy h2 em{color:var(--v34-ink)!important}
+.f29-close{background:var(--v34-ink)!important;color:var(--v34-paper)!important}.f29-close h2 em{color:var(--v34-paper)!important}.f29-close .f29-btn{background:var(--v34-paper)!important;color:var(--v34-ink)!important}.f29-close .f29-btn:hover{background:var(--v34-accent)!important;color:#fff!important}
+.f29-product-image{background:var(--v34-surface)!important}.f29-product-meta b{font-weight:500!important}.f29-product-status{color:var(--v34-accent)!important}
+.f29-hero:before{color:var(--v34-muted)!important}
+@media(max-width:900px){.f29-hero{grid-template-columns:1fr!important;min-height:auto!important}.f29-hero-left{min-height:68svh!important}.f29-showcase{min-height:74svh!important}.f29-hero-title{font-size:clamp(68px,17vw,105px)!important;margin-top:8vh!important}.f31-campaign{padding-top:85px!important}}
+@media(max-width:560px){.f29-hero-left{padding:20px 16px 18px!important;min-height:72svh!important}.f29-hero-title{font-size:clamp(64px,18vw,92px)!important}.f29-showcase{min-height:62svh!important}.f31-campaign{padding-top:72px!important}}

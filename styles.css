@@ -823,3 +823,24 @@ body{font-weight:400;letter-spacing:-.012em}
 .loader-mark{font-family:var(--display)!important;font-weight:600!important}
 .loader-line i{background:var(--gold)!important}
 @media(max-width:900px){.f29-hero-title,.f31-campaign-head h2,.f32-journal-head h2,.f32-service-intro h2{font-weight:600!important}}
+
+/* V34 GLOBAL SYSTEM — modern Italian fashion */
+:root{--paper:#F4F1EA;--white:#FBFAF6;--ink:#0C0C0B;--soft:#B7B1A8;--muted:#77736C;--line:rgba(12,12,11,.13);--dark:#10100F;--accent:#A46B4C;--pad:clamp(16px,3vw,48px);--max:1600px;--ease:cubic-bezier(.2,.72,.2,1)}
+body{font-family:'Instrument Sans',Arial,sans-serif!important;background:var(--paper)!important;color:var(--ink)!important;letter-spacing:-.012em}
+.utility{background:var(--ink)!important;color:#a7a19a!important}
+.header{background:rgba(244,241,234,.92)!important;border-bottom-color:var(--line)!important}
+.desktop-nav{font-family:'DM Mono',monospace!important;font-size:8px!important;letter-spacing:.16em!important}
+.desktop-nav a:after{background:var(--ink)!important}
+.mega,.search{background:var(--paper)!important;border-bottom-color:var(--line)!important}
+.mega-grid a{font-family:'Instrument Sans',Arial,sans-serif!important;font-weight:500!important;letter-spacing:-.07em!important}
+.search-inner>input{font-family:'Instrument Sans',Arial,sans-serif!important;font-weight:500!important}
+.cart{background:var(--paper)!important}.cart-top{border-bottom-color:var(--line)!important}
+.footer{background:var(--ink)!important}.footer a:hover{color:var(--accent)!important}
+.loader-mark{font-family:'Instrument Sans',Arial,sans-serif!important;font-weight:500!important;letter-spacing:-.08em!important}.loader-line i{background:var(--accent)!important}
+.page-hero,.collection-head,.shop-bar,.pdp-v29-info,.checkout,.legal,.confirmation{background:var(--paper)!important}
+.page-hero h1,.collection-head h1,.checkout h1,.confirmation h1,.legal h1{font-family:'Instrument Sans',Arial,sans-serif!important;font-weight:500!important;letter-spacing:-.08em!important}
+.page-hero h1 i,.collection-head h1 i,.checkout h1 i,.confirmation h1 i{font-family:'Instrument Serif',Georgia,serif!important;color:var(--ink)!important}
+.shop-grid,.collection-grid{background:transparent!important}.shop-card,.collection-row,.collection-grid>a{background:var(--paper)!important}
+.shop-img,.collection-image,.collection-grid>a div,.pdp-v29-main,.pdp-v29-gallery{background:var(--white)!important}
+.filter-group button.active,.filter-group button:hover,.brands-page>a:hover h2,.search-row:hover{color:var(--accent)!important}
+.pdp-v29-info h1{font-family:'Instrument Sans',Arial,sans-serif!important;font-weight:500!important;letter-spacing:-.08em!important}.pdp-v29-cta{background:var(--ink)!important;border-color:var(--ink)!important}.pdp-v29-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important}
