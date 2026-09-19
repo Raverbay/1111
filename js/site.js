@@ -1,3 +1,4 @@
+/* FLIPCO V35.4 — MENU NAVIGATION FIX */
 (()=>{
 const loader=document.createElement('div'); loader.id='flipLoader'; loader.innerHTML='<div class=\"loader-mark\">FLIP&CO</div><div class=\"loader-line\"><i></i></div><div class=\"loader-meta\"><span>SELECTED / CAGLIARI</span><span>LOADING EDIT</span></div>'; document.documentElement.classList.add('is-loading'); document.addEventListener('DOMContentLoaded',()=>{document.body.prepend(loader); requestAnimationFrame(()=>loader.classList.add('ready')); window.setTimeout(()=>{loader.classList.add('done'); document.documentElement.classList.remove('is-loading'); window.setTimeout(()=>loader.remove(),700)},820)});})();
 (()=>{
@@ -27,7 +28,27 @@ $('#menuBtn').onclick=()=>{const on=!mega.classList.contains('open');closePanels
 $('#closeMega').onclick=closePanels;ov.onclick=closePanels;
 $('#searchBtn').onclick=()=>{closePanels();search.classList.add('open');ov.classList.add('open');search.setAttribute('aria-hidden','false');body.classList.add('no-scroll');$('#searchInput').focus()};$('#closeSearch').onclick=closePanels;
 $('#searchInput').oninput=async e=>{const q=e.target.value.trim().toLowerCase(),ps=await FLIPCO.load();const a=ps.filter(p=>usable(p)&&(p.name+' '+p.brand+' '+p.category+' '+(p.type||'')).toLowerCase().includes(q)).slice(0,10);$('#searchResults').innerHTML=q?(a.length?a.map(p=>`<a class="search-row" href="product.html?id=${encodeURIComponent(p.id)}"><img src="${esc(p.image)}" alt="" onerror="this.onerror=null;this.src='assets/products/${esc(p.art||'nb-9060-erc.svg')}'"><span><small>${esc(p.brand)}</small><b>${esc(p.name)}</b></span><strong>${FLIPCO.money(p.price)}</strong></a>`).join(''):'<p class="muted">Nessun risultato.</p>'):'<p class="muted">Cerca un brand o un prodotto.</p>'};
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanels();closeCart()}});document.addEventListener('click',e=>{if(e.target.closest('.mega a,.search-row'))closePanels()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanels();closeCart()}});document.addEventListener('click',e=>{
+  const link=e.target.closest('.mega a,.search-row');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  closePanels();
+  if(href && href !== '#'){
+    e.preventDefault();
+    window.location.href=href;
+  }
+});
+// Explicit navigation for the mega menu: keeps links reliable on mobile browsers.
+document.querySelectorAll('.mega a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const href=link.getAttribute('href');
+    if(!href || href==='#') return;
+    e.preventDefault();
+    e.stopPropagation();
+    closePanels();
+    window.location.assign(href);
+  });
+});
 function closeCart(){$('#cart')?.classList.remove('open');$('#cartBackdrop')?.classList.remove('open');body.classList.remove('no-scroll')}
 $('#cartBtn').onclick=()=>{$('#cart').classList.add('open');$('#cartBackdrop').classList.add('open');body.classList.add('no-scroll')};$('#closeCart').onclick=closeCart;$('#cartBackdrop').onclick=closeCart;
 async function cartRefresh(){const ps=await FLIPCO.load(),items=FLIPCO_CART.items();$('#cartCount').textContent=FLIPCO_CART.count();$('#cartList').innerHTML=items.length?items.map(x=>{const p=ps.find(y=>y.id===x.id);return p?`<div class="cart-row"><img src="${esc(p.image)}" alt="" onerror="this.onerror=null;this.src='assets/products/${esc(p.art||'nb-9060-erc.svg')}'"><div><small>${esc(p.brand)}</small><b>${esc(p.name)}</b><span>${esc(x.size)} · ${x.qty} × ${FLIPCO.money(p.price)}</span><button data-remove="${esc(x.id)}" data-size="${esc(x.size)}">RIMUOVI</button></div></div>`:''}).join(''):'<div class="cart-empty"><span>0</span><p>Il tuo bag è vuoto.</p><a href="shop.html" class="arrow">SCOPRI LA SELEZIONE ↗</a></div>';
